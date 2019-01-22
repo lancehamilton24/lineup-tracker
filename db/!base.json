@@ -1,3 +1,4 @@
 {
-  "lineups": "baseball"
+  "lineups": "lineups",
+  "players": "players"
 }
