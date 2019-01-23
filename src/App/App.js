@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import lineupRequests from '../helpers/data/lineupRequests';
-import Home from '../components/pages/Home/Home';
-import Auth from '../components/pages/Auth/Auth';
-import './App.scss';
+
 import connection from '../helpers/data/connections';
+
+import Auth from '../components/pages/Auth/Auth';
+import Home from '../components/pages/Home/Home';
+import MyNavbar from '../components/MyNavbar/MyNavbar';
+
+
+import lineupRequests from '../helpers/data/lineupRequests';
+
+import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
 
@@ -24,12 +30,12 @@ class App extends Component {
           pendingUser: false,
         });
 
-        const articlesPage = () => {
+        const lineupsPage = () => {
           const uid = authRequests.getCurrentUid();
           console.log(lineupRequests.getAllLineups(uid));
         };
 
-        articlesPage();
+        lineupsPage();
       } else {
         this.setState({
           authed: false,
@@ -51,7 +57,8 @@ class App extends Component {
 
     if (!authed) {
       return (
-        <div className="App">>
+        <div className="App">
+        <MyNavbar isAuthed={authed}/>
           <div className="row">
             <Auth isAuthenticated={this.isAuthenticated}/>
           </div>
@@ -60,6 +67,7 @@ class App extends Component {
     }
     return (
       <div className="App">
+      <MyNavbar isAuthed={authed} />
         <div className="row">
           <Home
           home={home}
