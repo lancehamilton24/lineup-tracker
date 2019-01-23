@@ -6,10 +6,12 @@ import connection from '../helpers/data/connections';
 
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
+import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 
 
 import lineupRequests from '../helpers/data/lineupRequests';
+import playerRequests from '../helpers/data/playerRequests';
 
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
@@ -35,7 +37,12 @@ class App extends Component {
           console.log(lineupRequests.getAllLineups(uid));
         };
 
+        const playersPage = () => {
+          console.log(playerRequests.getPlayersByLineupId());
+        };
+
         lineupsPage();
+        playersPage();
       } else {
         this.setState({
           authed: false,
@@ -80,6 +87,9 @@ class App extends Component {
         <div className="row">
           <Home
           home={home}
+          />
+          <CreateLineup 
+          CreateLineup={CreateLineup}
           />
         </div>
       </div>
