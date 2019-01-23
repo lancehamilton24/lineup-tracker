@@ -3,8 +3,8 @@ import apiKeys from '../apiKeys';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
-const getAllLineups = () => new Promise((resolve, reject) => {
-  axios.get(`${firebaseUrl}/lineups.json`)
+const getAllLineups = uid => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/lineups.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
       const lineupObject = result.data;
       const lineupArray = [];

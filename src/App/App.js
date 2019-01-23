@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// import lineupPlayerRequests from '../helpers/data/lineupPlayerRequests';
+import lineupRequests from '../helpers/data/lineupRequests';
 import Home from '../components/pages/Home/Home';
 import Auth from '../components/pages/Auth/Auth';
 import './App.scss';
 import connection from '../helpers/data/connections';
-// import authRequests from '../helpers/data/authRequests';
+import authRequests from '../helpers/data/authRequests';
 
 
 class App extends Component {
@@ -23,6 +23,13 @@ class App extends Component {
           authed: true,
           pendingUser: false,
         });
+
+        const articlesPage = () => {
+          const uid = authRequests.getCurrentUid();
+          console.log(lineupRequests.getAllLineups(uid));
+        };
+
+        articlesPage();
       } else {
         this.setState({
           authed: false,
@@ -62,7 +69,5 @@ class App extends Component {
     );
   }
 }
-
-// console.log(lineupPlayerRequests.getLineupsAndPlayers());
 
 export default App;

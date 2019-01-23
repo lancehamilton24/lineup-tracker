@@ -1,7 +1,7 @@
 // import lineupRequests from './lineupRequests';
 // import playerRequests from './playerRequests';
 
-// const getLineupsAndPlayers = lineupId => new Promise((resolve, reject) => {
+// const getLineupsAndPlayers = () => new Promise((resolve, reject) => {
 //   let allLineups = [];
 //   lineupRequests.getAllLineups()
 //     .then((lineupz) => {
