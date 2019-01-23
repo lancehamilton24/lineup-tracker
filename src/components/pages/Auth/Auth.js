@@ -1,16 +1,20 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import './Auth.scss';
 import authRequests from '../../../helpers/data/authRequests';
 
 import googleButton from './googlebutton.png';
 
 class Auth extends React.Component {
+  static propTypes = {
+    isAuthenticated: PropTypes.func,
+  }
+
   authenticateUser = (e) => {
     e.preventDefault();
     authRequests.authenticate().then(() => {
-      this.props.history.push('/home');
-    }).catch(err => console.error('error in auth', err));
+      this.props.isAuthenticated();
+    }).catch(err => console.error('there was an error with auth', err));
   }
 
   render() {

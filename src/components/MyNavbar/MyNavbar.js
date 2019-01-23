@@ -9,6 +9,7 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {

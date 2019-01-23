@@ -49,16 +49,25 @@ class App extends Component {
     this.removeListener();
   }
 
+  isAuthenticated = () => {
+    this.setState({ authed: true });
+  }
+
   render() {
     const {
       authed,
       home,
     } = this.state;
 
+    const logoutClickEvent = () => {
+      authRequests.logoutUser();
+      this.setState({ authed: false });
+    };
+
     if (!authed) {
       return (
         <div className="App">
-        <MyNavbar isAuthed={authed}/>
+        <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
           <div className="row">
             <Auth isAuthenticated={this.isAuthenticated}/>
           </div>
@@ -67,7 +76,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-      <MyNavbar isAuthed={authed} />
+      <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}  />
         <div className="row">
           <Home
           home={home}
