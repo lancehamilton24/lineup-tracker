@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import {
+  BrowserRouter, Route, Redirect, Switch,
+} from 'react-router-dom';
 
 import connection from '../helpers/data/connections';
 
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
 import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
+import ViewLineup from '../components/pages/ViewLineup/ViewLineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 
 
@@ -16,6 +20,19 @@ import playerRequests from '../helpers/data/playerRequests';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === false
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
+
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === true
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
 
 class App extends Component {
   state = {
@@ -83,15 +100,22 @@ class App extends Component {
     }
     return (
       <div className="App">
-      <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}  />
-        <div className="row">
-          <Home
-          home={home}
-          />
-          <CreateLineup 
-          CreateLineup={CreateLineup}
-          />
-        </div>
+          <BrowserRouter>
+          <React.Fragment>
+            <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
+            <div className='container'>
+            <div className='row'>
+                <Switch>
+                  <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
+                  <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
+                  <PrivateRoute path="/createlineup" authed={this.state.authed} component={CreateLineup} />
+                  <PrivateRoute path="/viewlineup" authed={this.state.authed} component={ViewLineup} />
+                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                </Switch>
+              </div>
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }
