@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
 // import authRequests from '../../helpers/data/authRequests';
 
@@ -15,6 +15,11 @@ class LineupItem extends React.Component {
   lineupClick = (e) => {
     e.stopPropagation();
     const { lineup } = this.props;
+    const getLineupPlayers = (lineupId) => {
+      console.log(playerRequests.getPlayersByLineupId(lineupId));
+    };
+  
+    getLineupPlayers('lineup2');
     console.log(lineup.id);
   }
 
