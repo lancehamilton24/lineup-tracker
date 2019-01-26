@@ -13,10 +13,6 @@ import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import ViewLineup from '../components/pages/ViewLineup/ViewLineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 
-
-import lineupRequests from '../helpers/data/lineupRequests';
-import playerRequests from '../helpers/data/playerRequests';
-
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
@@ -48,18 +44,6 @@ class App extends Component {
           authed: true,
           pendingUser: false,
         });
-
-        const lineupsPage = () => {
-          const uid = authRequests.getCurrentUid();
-          console.log(lineupRequests.getAllLineups(uid));
-        };
-
-        const playersPage = () => {
-          console.log(playerRequests.getPlayersByLineupId());
-        };
-
-        lineupsPage();
-        playersPage();
       } else {
         this.setState({
           authed: false,
@@ -80,7 +64,6 @@ class App extends Component {
   render() {
     const {
       authed,
-      home,
     } = this.state;
 
     const logoutClickEvent = () => {
@@ -110,6 +93,7 @@ class App extends Component {
                   <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
                   <PrivateRoute path="/createlineup" authed={this.state.authed} component={CreateLineup} />
                   <PrivateRoute path="/viewlineup" authed={this.state.authed} component={ViewLineup} />
+                  <PrivateRoute path="/viewlineup/:lineupId" authed={this.state.authed} component={ViewLineup} />
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
               </div>
