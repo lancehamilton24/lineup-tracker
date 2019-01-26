@@ -12,7 +12,7 @@ import Home from '../components/pages/Home/Home';
 import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import ViewLineup from '../components/pages/ViewLineup/ViewLineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-
+import playerRequests from '../helpers/data/playerRequests';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
@@ -44,6 +44,12 @@ class App extends Component {
           authed: true,
           pendingUser: false,
         });
+        const getLineupPlayers = (lineupId) => {
+          console.log(playerRequests.getPlayersByLineupId(lineupId));
+        };
+
+        getLineupPlayers('lineup3');
+
       } else {
         this.setState({
           authed: false,

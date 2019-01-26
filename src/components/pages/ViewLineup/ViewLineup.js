@@ -20,7 +20,6 @@ class ViewLineup extends React.Component {
 
   componentDidMount() {
     this.getLineups();
-    console.log(this.getLineups());
   }
   
   render() {
