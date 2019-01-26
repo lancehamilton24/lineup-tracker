@@ -41,11 +41,11 @@ class ViewLineup extends React.Component {
     const {
       lineups,
       onLineupSelection,
-      selectedLineupId,
+      // selectedLineupId,
     } = this.state;
 
-    const selectedLineup = lineups.find(lineup => lineup.id === selectedLineupId) || { nope: 'nope' };
-    console.log(selectedLineup);
+    // const selectedLineup = lineups.find(lineup => lineup.id === selectedLineupId) || { nope: 'nope' };
+    // console.log(selectedLineup);
     const lineupItems = lineups.map(lineup => (
       <LineupItem
       lineup={lineup}
