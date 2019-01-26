@@ -1,5 +1,6 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys';
+// import lineupRequests from './lineupRequests';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
@@ -38,6 +39,20 @@ const getPlayersByLineupId = lineupId => new Promise((resolve, reject) => {
       reject(error);
     });
 });
+
+// const getPlayersByLineupId = () => new Promise((resolve, reject) => {
+//   let lineups = [];
+//   lineupRequests.getAllLineups()
+//     .then((lineupz) => {
+//       lineups = lineupz;
+//       getAllPlayers()
+//         .then((plyrs) => {
+//           const players = plyrs.map(plyr => Object.assign({ ...plyr, ...lineups.find(x => x.lineupId === plyr.lineupId)}));
+//           resolve(players);
+//         });
+//     })
+//     .catch(err => reject(err));
+// });
 
 export default {
   getAllPlayers,
