@@ -19,7 +19,7 @@ class LineupItem extends React.Component {
       console.log(playerRequests.getPlayersByLineupId(lineupId));
     };
   
-    getLineupPlayers('lineup2');
+    getLineupPlayers(lineup.id);
     console.log(lineup.id);
   }
 
