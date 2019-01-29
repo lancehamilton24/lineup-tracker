@@ -37,7 +37,20 @@ class ViewLineup extends React.Component {
   componentDidMount() {
     this.getLineups();
   }
-  
+
+  deleteOne = (lineupId) => {
+    lineupRequests.deleteLineup(lineupId)
+      .then(() => {
+        console.log('hello');
+        const uid = authRequests.getCurrentUid();
+        lineupRequests.getAllLineups(uid)
+          .then((lineups) => {
+            this.setState({ lineups });
+          });
+      })
+      .catch(err => console.error('error with delete single', err));
+  }
+
   render() {
     const {
       lineups,
@@ -50,6 +63,7 @@ class ViewLineup extends React.Component {
     const lineupItems = lineups.map(lineup => (
       <LineupItem
       lineup={lineup}
+      deleteSingleLineup={this.deleteOne}
       key={lineup.id}
       onSelect={onLineupSelection}
       />
