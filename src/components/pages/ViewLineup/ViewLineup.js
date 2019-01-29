@@ -6,6 +6,7 @@ import './ViewLineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
+// import SingleLineup from '../SingleLineup/SingleLineup';
 
 
 class ViewLineup extends React.Component {
@@ -60,6 +61,9 @@ class ViewLineup extends React.Component {
         <div>
             <ul>{lineupItems}</ul>
         </div>
+        {/* <div>
+          <SingleLineup />
+        </div> */}
       </div>
     );
   }

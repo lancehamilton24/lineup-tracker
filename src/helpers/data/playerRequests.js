@@ -30,7 +30,7 @@ const getPlayersByLineupId = lineupId => new Promise((resolve, reject) => {
       if (playerObject != null) {
         Object.keys(playerObject).forEach((playerId) => {
           playerObject[playerId].id = playerId;
-          playerArray.push(playerObject[playerId].lineupId);
+          playerArray.push(playerObject[playerId]);
         });
       }
       resolve(playerArray);
