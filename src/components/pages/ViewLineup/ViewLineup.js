@@ -13,6 +13,8 @@ class ViewLineup extends React.Component {
   state = {
     lineups: [],
     selectedLineupId: -1,
+    isEditing: false,
+    editId: '-1',
   }
 
   static propTypes = {
@@ -55,10 +57,14 @@ class ViewLineup extends React.Component {
       .catch(err => console.error('error with delete single', err));
   }
 
+  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
+
   render() {
     const {
       lineups,
       onLineupSelection,
+      isEditing,
+      editId,
       // selectedLineupId,
     } = this.state;
 
@@ -70,6 +76,7 @@ class ViewLineup extends React.Component {
       deleteSingleLineup={this.deleteOne}
       key={lineup.id}
       onSelect={onLineupSelection}
+      passLineupToEdit={this.passLineupToEdit}
       loadSelectedLineup={this.loadSelectedLineup}
       />
     ));
@@ -81,7 +88,7 @@ class ViewLineup extends React.Component {
             <ul>{lineupItems}</ul>
         </div>
         <div>
-          <SingleLineup/>
+          <SingleLineup onSubmit={this.formSubmitEvent} isEditing={isEditing} editId={editId}/>
         </div>
       </div>
     );
