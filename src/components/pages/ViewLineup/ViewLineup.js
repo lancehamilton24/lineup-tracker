@@ -6,7 +6,7 @@ import './ViewLineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
-// import SingleLineup from '../SingleLineup/SingleLineup';
+import SingleLineup from '../SingleLineup/SingleLineup';
 
 
 class ViewLineup extends React.Component {
@@ -33,6 +33,10 @@ class ViewLineup extends React.Component {
         this.setState({ lineups });
       });
   };
+
+  loadSelectedLineup = () => {
+    alert('hello');
+  }
 
   componentDidMount() {
     this.getLineups();
@@ -66,6 +70,7 @@ class ViewLineup extends React.Component {
       deleteSingleLineup={this.deleteOne}
       key={lineup.id}
       onSelect={onLineupSelection}
+      loadSelectedLineup={this.loadSelectedLineup}
       />
     ));
 
@@ -75,9 +80,9 @@ class ViewLineup extends React.Component {
         <div>
             <ul>{lineupItems}</ul>
         </div>
-        {/* <div>
-          <SingleLineup />
-        </div> */}
+        <div>
+          <SingleLineup/>
+        </div>
       </div>
     );
   }

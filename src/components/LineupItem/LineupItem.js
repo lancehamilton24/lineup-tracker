@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import playerRequests from '../../helpers/data/playerRequests';
+// import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
 // import authRequests from '../../helpers/data/authRequests';
 
@@ -13,16 +13,16 @@ class LineupItem extends React.Component {
     onListingSelection: PropTypes.func,
   }
 
-  lineupClick = (e) => {
-    e.stopPropagation();
-    const { lineup } = this.props;
-    const getLineupPlayers = (lineupId) => {
-      console.log(playerRequests.getPlayersByLineupId(lineupId));
-    };
+  // lineupClick = (e) => {
+  //   e.stopPropagation();
+  //   const { lineup } = this.props;
+  //   const getLineupPlayers = (lineupId) => {
+  //     console.log(playerRequests.getPlayersByLineupId(lineupId));
+  //   };
   
-    getLineupPlayers(lineup.id);
-    console.log(lineup.id);
-  }
+  //   getLineupPlayers(lineup.id);
+  //   console.log(lineup.id);
+  // }
 
   deleteLineup = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ class LineupItem extends React.Component {
     };
 
     return (
-      <li className="lineup-item text-center" onClick={this.lineupClick}>
+      <li className="lineup-item text-center" onClick={this.props.loadSelectedLineup}>
         <span className="col-7">{lineup.name}</span>
         {makeButtons()}
       </li>
