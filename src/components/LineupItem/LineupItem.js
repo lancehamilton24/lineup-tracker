@@ -13,16 +13,16 @@ class LineupItem extends React.Component {
     onListingSelection: PropTypes.func,
   }
 
-  // lineupClick = (e) => {
-  //   e.stopPropagation();
-  //   const { lineup } = this.props;
-  //   const getLineupPlayers = (lineupId) => {
-  //     console.log(playerRequests.getPlayersByLineupId(lineupId));
-  //   };
-  
-  //   getLineupPlayers(lineup.id);
-  //   console.log(lineup.id);
-  // }
+  lineupClick = (e) => {
+    e.stopPropagation();
+    const { loadSelectedLineup, lineup } = this.props;
+    // const getLineupPlayers = (lineupId) => {
+    //   console.log(playerRequests.getPlayersByLineupId(lineupId));
+    // };
+
+    loadSelectedLineup(lineup.id);
+    console.log(lineup.id);
+  }
 
   deleteLineup = (e) => {
     e.preventDefault();
@@ -33,19 +33,17 @@ class LineupItem extends React.Component {
   render() {
     const { lineup } = this.props;
     // const uid = authRequests.getCurrentUid();
-    const makeButtons = () => {
-      return (
+    const makeButtons = () => (
           <div>
             <span className="col">
               <button className="btn btn-default" onClick={this.deleteLineup}>
               </button>
             </span>
           </div>
-      );
-    };
+    );
 
     return (
-      <li className="lineup-item text-center" onClick={this.props.loadSelectedLineup}>
+      <li className="lineup-item text-center" onClick={this.lineupClick}>
         <span className="col-7">{lineup.name}</span>
         {makeButtons()}
       </li>
