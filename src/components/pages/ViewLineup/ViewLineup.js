@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import LineupItem from '../../LineupItem/LineupItem';
 import './ViewLineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
-// import playerRequests from '../../../helpers/data/playerRequests';
+import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 // import SingleLineup from '../SingleLineup/SingleLineup';
@@ -37,8 +37,11 @@ class ViewLineup extends React.Component {
   };
 
   loadSelectedLineup = (lineupId) => {
-    alert(lineupId);
-    // playerRequests.getPlayersByLineupId(lineupId)
+    // alert(lineupId);
+    playerRequests.getPlayersByLineupId(lineupId)
+      .then((lineups) => {
+        this.setState({ lineups });
+      });
   }
 
   componentDidMount() {
