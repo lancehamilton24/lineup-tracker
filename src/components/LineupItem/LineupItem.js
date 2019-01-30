@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import playerRequests from '../../helpers/data/playerRequests';
+// import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
 // import authRequests from '../../helpers/data/authRequests';
 
@@ -15,12 +15,12 @@ class LineupItem extends React.Component {
 
   lineupClick = (e) => {
     e.stopPropagation();
-    const { lineup } = this.props;
-    const getLineupPlayers = (lineupId) => {
-      console.log(playerRequests.getPlayersByLineupId(lineupId));
-    };
-  
-    getLineupPlayers(lineup.id);
+    const { loadSelectedLineup, lineup } = this.props;
+    // const getLineupPlayers = (lineupId) => {
+    //   console.log(playerRequests.getPlayersByLineupId(lineupId));
+    // };
+
+    loadSelectedLineup(lineup.id);
     console.log(lineup.id);
   }
 
@@ -33,20 +33,18 @@ class LineupItem extends React.Component {
   render() {
     const { lineup } = this.props;
     // const uid = authRequests.getCurrentUid();
-    const makeButtons = () => {
-      return (
+    const makeButtons = () => (
           <div>
             <span className="col">
               <button className="btn btn-default" onClick={this.deleteLineup}>
               </button>
             </span>
           </div>
-      );
-    };
+    );
 
     return (
-      <li className="lineup-item text-center" onClick={this.lineupClick}>
-        <span className="col-7">{lineup.name}</span>
+      <li className="lineup-item text-center">
+        <span className="col-7" onClick={this.lineupClick}>{lineup.name}</span>
         {makeButtons()}
       </li>
     );

@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
+import PlayerItem from '../../PlayerItem/PlayerItem';
 import './ViewLineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
+import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 // import SingleLineup from '../SingleLineup/SingleLineup';
@@ -12,6 +14,7 @@ import lineupShape from '../../../helpers/propz/lineupShape';
 class ViewLineup extends React.Component {
   state = {
     lineups: [],
+    players: [],
     selectedLineupId: -1,
   }
 
@@ -34,6 +37,14 @@ class ViewLineup extends React.Component {
       });
   };
 
+  loadSelectedLineup = (lineupId) => {
+    // alert(lineupId);
+    playerRequests.getPlayersByLineupId(lineupId)
+      .then((players) => {
+        this.setState({ players });
+      });
+  }
+
   componentDidMount() {
     this.getLineups();
   }
@@ -55,6 +66,8 @@ class ViewLineup extends React.Component {
     const {
       lineups,
       onLineupSelection,
+      players,
+      // players,
       // selectedLineupId,
     } = this.state;
 
@@ -66,6 +79,13 @@ class ViewLineup extends React.Component {
       deleteSingleLineup={this.deleteOne}
       key={lineup.id}
       onSelect={onLineupSelection}
+      loadSelectedLineup={this.loadSelectedLineup}
+      />
+    ));
+    const playerItems = players.map(player => (
+      <PlayerItem
+      player={player}
+      key={player.id}
       />
     ));
 
@@ -75,9 +95,15 @@ class ViewLineup extends React.Component {
         <div>
             <ul>{lineupItems}</ul>
         </div>
-        {/* <div>
-          <SingleLineup />
-        </div> */}
+        <div>
+        <p>View Lineup</p>
+        </div>
+        <div>
+          <ul>{playerItems}</ul>
+        </div>
+        <div>
+          {/* <SingleLineup/> */}
+        </div>
       </div>
     );
   }
