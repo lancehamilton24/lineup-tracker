@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
+import PlayerItem from '../../PlayerItem/PlayerItem';
 import './ViewLineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import playerRequests from '../../../helpers/data/playerRequests';
@@ -39,8 +40,8 @@ class ViewLineup extends React.Component {
   loadSelectedLineup = (lineupId) => {
     // alert(lineupId);
     playerRequests.getPlayersByLineupId(lineupId)
-      .then((lineups) => {
-        this.setState({ lineups });
+      .then((players) => {
+        this.setState({ players });
       });
   }
 
@@ -65,6 +66,7 @@ class ViewLineup extends React.Component {
     const {
       lineups,
       onLineupSelection,
+      players,
       // players,
       // selectedLineupId,
     } = this.state;
@@ -80,16 +82,24 @@ class ViewLineup extends React.Component {
       loadSelectedLineup={this.loadSelectedLineup}
       />
     ));
-    // const playerItems = players.map(player => (
-    //   player={player}
-    //   key={player.id}
-    // ));
+    const playerItems = players.map(player => (
+      <PlayerItem
+      player={player}
+      key={player.id}
+      />
+    ));
 
     return (
       <div className='ViewLineup'>
             <p>View Lineup</p>
         <div>
             <ul>{lineupItems}</ul>
+        </div>
+        <div>
+        <p>View Lineup</p>
+        </div>
+        <div>
+          <ul>{playerItems}</ul>
         </div>
         <div>
           {/* <SingleLineup/> */}

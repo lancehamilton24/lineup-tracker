@@ -21,10 +21,9 @@ class PlayerItem extends React.Component {
 
     return (
       <h4 className="player-item text-center">
-        <span className="col-7">{player.name}</span>
-        <span className="col-7">{player.position}</span>
-        <span className="col-7">{player.number}</span>
-        <span className="col-7">{player.hits}</span>
+        {player.name}
+        {player.position}
+        {player.number}
       </h4>
     );
   }
