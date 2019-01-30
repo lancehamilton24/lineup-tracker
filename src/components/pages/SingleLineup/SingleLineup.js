@@ -77,7 +77,7 @@ class SingleLineup extends React.Component {
               onChange={this.lineupChange}
             />
           </div>
-          <Button className="btn btn-danger">Save Event</Button>
+          <Button className="btn btn-danger">Save Lineup Name</Button>
         </form>
       </div>
       );
