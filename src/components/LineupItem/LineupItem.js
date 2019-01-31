@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 // import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
 // import authRequests from '../../helpers/data/authRequests';
@@ -24,6 +25,12 @@ class LineupItem extends React.Component {
     console.log(lineup.id);
   }
 
+  editLineup = (e) => {
+    e.preventDefault();
+    const { passLineupToEdit, lineup } = this.props;
+    passLineupToEdit(lineup.id);
+  }
+
   deleteLineup = (e) => {
     e.preventDefault();
     const { deleteSingleLineup, lineup } = this.props;
@@ -36,8 +43,10 @@ class LineupItem extends React.Component {
     const makeButtons = () => (
           <div>
             <span className="col">
-              <button className="btn btn-default" onClick={this.deleteLineup}>
-              </button>
+              <Button className="btn btn-default" onClick={this.deleteLineup}>Delete</Button>
+            </span>
+            <span className="col">
+              <Button className="btn btn-default" onClick={this.editLineup}>Edit</Button>
             </span>
           </div>
     );

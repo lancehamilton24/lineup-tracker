@@ -23,7 +23,13 @@ const getAllLineups = uid => new Promise((resolve, reject) => {
 
 const deleteLineup = lineupId => axios.delete(`${firebaseUrl}/lineups/${lineupId}.json`);
 
+const getSingleLineup = lineupId => axios.get(`${firebaseUrl}/lineups/${lineupId}.json`);
+
+const updateLineup = (lineupId, lineup) => axios.put(`${firebaseUrl}/lineups/${lineupId}.json`, lineup);
+
 export default {
   getAllLineups,
   deleteLineup,
+  getSingleLineup,
+  updateLineup,
 };
