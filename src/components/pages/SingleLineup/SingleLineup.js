@@ -29,7 +29,7 @@ class SingleLineup extends React.Component {
     this.setState({ newLineupName: tempLineup });
   }
 
-  lineupChange = e => this.formFieldStringAndNumberState('event', e);
+  lineupChange = e => this.formFieldStringAndNumberState('name', e);
 
   formSubmit = (e) => {
     e.preventDefault();
@@ -44,8 +44,8 @@ class SingleLineup extends React.Component {
     const { isEditing, editId } = this.props;
     if (prevProps !== this.props && isEditing) {
       lineupRequests.getSingleLineup(editId)
-        .then((event) => {
-          this.setState({ newListing: event.data });
+        .then((lineup) => {
+          this.setState({ newListing: lineup.data });
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
@@ -54,12 +54,6 @@ class SingleLineup extends React.Component {
   render() {
     const { newLineupName } = this.state;
     const { isEditing } = this.props;
-    // const title = () => {
-    //   if (isEditing) {
-    //     return <h2>Edit Event:</h2>;
-    //   }
-    //   return <h2>New Event:</h2>;
-    // };
     if (isEditing) {
       return (
       <div className="event-form col">
