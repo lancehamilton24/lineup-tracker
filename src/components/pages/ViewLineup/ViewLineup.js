@@ -9,6 +9,7 @@ import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 import SingleLineup from '../SingleLineup/SingleLineup';
+import PlayerForm from '../PlayerForm/PlayerForm';
 
 
 class ViewLineup extends React.Component {
@@ -89,6 +90,17 @@ class ViewLineup extends React.Component {
     }
   }
 
+  formSubmitPlayer = (newPlayer) => {
+    playerRequests.postPlayerRequest(newPlayer)
+      .then((lineupId) => {
+        playerRequests.getPlayersByLineupId(lineupId)
+          .then((players) => {
+            this.setState({ players });
+          });
+      })
+      .catch(err => console.error('error with listings post', err));
+  }
+
   passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
 
   render() {
@@ -133,6 +145,7 @@ class ViewLineup extends React.Component {
         </div>
         <div>
           <ul>{playerItems}</ul>
+          <PlayerForm onSubmit={this.formSubmitPlayer}/>
         </div>
         <div>
           {/* <SingleLineup/> */}
