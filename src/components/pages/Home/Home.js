@@ -8,14 +8,14 @@ class Home extends React.Component {
     return (
       <div className='Home'>
             <p>Home Page</p>
-            <Button
+            {/* <Button
     color="success"
     size="large"
     tag={RRNavLink}
-    to='/createlineup'
+    to='/createlineup/:lineupId'
 >
     Create Lineup
-</Button>
+</Button> */}
 <Button
     color="success"
     size="large"

@@ -54,10 +54,15 @@ class SingleLineup extends React.Component {
   render() {
     const { newLineupName } = this.state;
     const { isEditing } = this.props;
-    if (isEditing) {
-      return (
+    const title = () => {
+      if (isEditing) {
+        return <h2>Edit Lineup:</h2>;
+      }
+      return <h2>New Lineup:</h2>;
+    };
+    return (
       <div className="event-form col">
-        {/* {title()} */}
+        {title()}
         <form onSubmit={this.formSubmit}>
           <div className="form-group">
             <input
@@ -73,9 +78,7 @@ class SingleLineup extends React.Component {
           <Button className="btn btn-danger">Save Lineup Name</Button>
         </form>
       </div>
-      );
-    }
-    return '';
+    );
   }
 }
 

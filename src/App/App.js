@@ -9,7 +9,7 @@ import connection from '../helpers/data/connections';
 
 import Auth from '../components/pages/Auth/Auth';
 import Home from '../components/pages/Home/Home';
-import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
+// import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import ViewLineup from '../components/pages/ViewLineup/ViewLineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 // import playerRequests from '../helpers/data/playerRequests';
@@ -92,9 +92,9 @@ class App extends Component {
                 <Switch>
                   <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
                   <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
-                  <PrivateRoute path="/createlineup" authed={this.state.authed} component={CreateLineup} />
+                  {/* <PrivateRoute path="/createlineup" authed={this.state.authed} component={CreateLineup} /> */}
                   <PrivateRoute path="/viewlineup" authed={this.state.authed} component={ViewLineup} />
-                  <PrivateRoute path="/viewlineup/:lineupId" authed={this.state.authed} component={ViewLineup} />
+                  {/* <PrivateRoute path="/createlineup/:lineupId" authed={this.state.authed} component={CreateLineup} /> */}
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
               </div>
