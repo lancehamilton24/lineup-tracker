@@ -14,16 +14,16 @@ class LineupItem extends React.Component {
     onListingSelection: PropTypes.func,
   }
 
-  // lineupClick = (e) => {
-  //   e.stopPropagation();
-  //   const { lineup } = this.props;
-  //   const getLineupPlayers = (lineupId) => {
-  //     console.log(playerRequests.getPlayersByLineupId(lineupId));
-  //   };
-  
-  //   getLineupPlayers(lineup.id);
-  //   console.log(lineup.id);
-  // }
+  lineupClick = (e) => {
+    e.stopPropagation();
+    const { loadSelectedLineup, lineup } = this.props;
+    // const getLineupPlayers = (lineupId) => {
+    //   console.log(playerRequests.getPlayersByLineupId(lineupId));
+    // };
+
+    loadSelectedLineup(lineup.id);
+    console.log(lineup.id);
+  }
 
   editLineup = (e) => {
     e.preventDefault();
@@ -40,8 +40,7 @@ class LineupItem extends React.Component {
   render() {
     const { lineup } = this.props;
     // const uid = authRequests.getCurrentUid();
-    const makeButtons = () => {
-      return (
+    const makeButtons = () => (
           <div>
             <span className="col">
               <Button className="btn btn-default" onClick={this.deleteLineup}>Delete</Button>
@@ -50,12 +49,11 @@ class LineupItem extends React.Component {
               <Button className="btn btn-default" onClick={this.editLineup}>Edit</Button>
             </span>
           </div>
-      );
-    };
+    );
 
     return (
       <li className="lineup-item text-center">
-        <span className="col-7" onClick={this.props.loadSelectedLineup}>{lineup.name}</span>
+        <span className="col-7" onClick={this.lineupClick}>{lineup.name}</span>
         {makeButtons()}
       </li>
     );

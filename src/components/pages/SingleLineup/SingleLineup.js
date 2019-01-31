@@ -66,13 +66,12 @@ class SingleLineup extends React.Component {
         {/* {title()} */}
         <form onSubmit={this.formSubmit}>
           <div className="form-group">
-            <label htmlFor="event">Lineup Name:</label>
             <input
               type="text"
               className="form-control"
               id="address"
               aria-describedby="addressHelp"
-              placeholder="Mardi Gras"
+              placeholder="Lineup Name"
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
@@ -82,7 +81,7 @@ class SingleLineup extends React.Component {
       </div>
       );
     }
-    return <h2>Hello</h2>;
+    return '';
   }
 }
 
