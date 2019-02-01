@@ -20,7 +20,7 @@ class Home extends React.Component {
     color="success"
     size="large"
     tag={RRNavLink}
-    to='/viewlineup'
+    to='/lineup'
 >
     View Lineup
 </Button>

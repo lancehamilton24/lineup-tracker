@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
-import './ViewLineup.scss';
+import './Lineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
-import SingleLineup from '../SingleLineup/SingleLineup';
+import LineupForm from '../LineupForm/LineupForm';
 import PlayerForm from '../PlayerForm/PlayerForm';
 
 
-class ViewLineup extends React.Component {
+class Lineup extends React.Component {
   state = {
     lineups: [],
     players: [],
@@ -134,11 +134,11 @@ class ViewLineup extends React.Component {
     ));
 
     return (
-      <div className='ViewLineup'>
+      <div className='Lineup'>
             <p>View Lineup</p>
         <div>
             <ul>{lineupItems}</ul>
-            <SingleLineup onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
+            <LineupForm onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
         </div>
         <div>
         <p>View Lineup</p>
@@ -148,11 +148,10 @@ class ViewLineup extends React.Component {
           <PlayerForm onSubmit={this.formSubmitPlayer}/>
         </div>
         <div>
-          {/* <SingleLineup/> */}
         </div>
       </div>
     );
   }
 }
 
-export default ViewLineup;
+export default Lineup;

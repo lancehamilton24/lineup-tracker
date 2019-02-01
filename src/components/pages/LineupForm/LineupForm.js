@@ -4,14 +4,14 @@ import { Button } from 'reactstrap';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupRequests from '../../../helpers/data/lineupRequests';
-import './SingleLineup.scss';
+import './LineupForm.scss';
 
 const defaultLineupName = {
   name: '',
   uid: '',
 };
 
-class SingleLineup extends React.Component {
+class LineupForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
     isEditing: PropTypes.bool,
@@ -82,4 +82,4 @@ class SingleLineup extends React.Component {
   }
 }
 
-export default SingleLineup;
+export default LineupForm;
