@@ -13,6 +13,7 @@ const defaultPlayer = {
 class PlayerForm extends React.Component {
   static propTypes = {
     onSubmit: PropTypes.func,
+    lineupId: PropTypes.string,
   }
 
   state = {
@@ -37,6 +38,8 @@ class PlayerForm extends React.Component {
     const { onSubmit } = this.props;
     const myPlayer = { ...this.state.newPlayer };
     myPlayer.uid = authRequests.getCurrentUid();
+    myPlayer.lineupId = this.props.lineupId;
+    console.log(myPlayer);
     onSubmit(myPlayer);
     this.setState({ newPlayer: defaultPlayer });
   }

@@ -16,7 +16,7 @@ class Lineup extends React.Component {
   state = {
     lineups: [],
     players: [],
-    selectedLineupId: -1,
+    lineupId: '',
     isEditing: false,
     editId: '-1',
   }
@@ -41,7 +41,7 @@ class Lineup extends React.Component {
   };
 
   loadSelectedLineup = (lineupId) => {
-    // alert(lineupId);
+    this.setState({ lineupId });
     playerRequests.getPlayersByLineupId(lineupId)
       .then((players) => {
         this.setState({ players });
@@ -121,7 +121,7 @@ class Lineup extends React.Component {
       lineup={lineup}
       deleteSingleLineup={this.deleteOne}
       key={lineup.id}
-      onSelect={onLineupSelection}
+      // onSelect={onLineupSelection}
       passLineupToEdit={this.passLineupToEdit}
       loadSelectedLineup={this.loadSelectedLineup}
       />
@@ -137,15 +137,23 @@ class Lineup extends React.Component {
       <div className='Lineup'>
             <p>View Lineup</p>
         <div>
-            <ul>{lineupItems}</ul>
-            <LineupForm onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
+          <LineupForm 
+          onSubmit={this.formSubmitLineup} 
+          isEditing={isEditing} 
+          editId={editId}
+          />
+          <ul>{lineupItems}</ul>
         </div>
         <div>
         <p>View Lineup</p>
         </div>
         <div>
           <ul>{playerItems}</ul>
-          <PlayerForm onSubmit={this.formSubmitPlayer}/>
+          <PlayerForm
+           onSubmit={this.formSubmitPlayer}
+           onSelect={onLineupSelection}
+           lineupId={this.state.lineupId}
+           />
         </div>
         <div>
         </div>
