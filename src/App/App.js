@@ -90,10 +90,10 @@ class App extends Component {
             <div className='container'>
             <div className='row'>
                 <Switch>
-                  <PrivateRoute path='/' exact component={Home} authed={this.state.authed} />
-                  <PrivateRoute path='/home' component={Home} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Lineup} authed={this.state.authed} />
+                  <PrivateRoute path='/lineup' component={Lineup} authed={this.state.authed} />
                   {/* <PrivateRoute path="/createlineup" authed={this.state.authed} component={CreateLineup} /> */}
-                  <PrivateRoute path="/lineup" authed={this.state.authed} component={Lineup} />
+                  {/* <PrivateRoute path="/lineup" authed={this.state.authed} component={Lineup} /> */}
                   {/* <PrivateRoute path="/createlineup/:lineupId" authed={this.state.authed} component={CreateLineup} /> */}
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
