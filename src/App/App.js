@@ -8,7 +8,7 @@ import {
 import connection from '../helpers/data/connections';
 
 import Auth from '../components/pages/Auth/Auth';
-import Home from '../components/pages/Home/Home';
+// import Home from '../components/pages/Home/Home';
 // import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import Lineup from '../components/pages/Lineup/Lineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
