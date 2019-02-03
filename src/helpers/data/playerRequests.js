@@ -40,21 +40,10 @@ const getPlayersByLineupId = lineupId => new Promise((resolve, reject) => {
     });
 });
 
-// const getPlayersByLineupId = () => new Promise((resolve, reject) => {
-//   let lineups = [];
-//   lineupRequests.getAllLineups()
-//     .then((lineupz) => {
-//       lineups = lineupz;
-//       getAllPlayers()
-//         .then((plyrs) => {
-//           const players = plyrs.map(plyr => Object.assign({ ...plyr, ...lineups.find(x => x.lineupId === plyr.lineupId)}));
-//           resolve(players);
-//         });
-//     })
-//     .catch(err => reject(err));
-// });
+const postPlayerRequest = newPlayer => axios.post(`${firebaseUrl}/players.json`, newPlayer);
 
 export default {
   getAllPlayers,
   getPlayersByLineupId,
+  postPlayerRequest,
 };

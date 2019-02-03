@@ -11,7 +11,7 @@ class LineupItem extends React.Component {
   static propTypes = {
     lineup: lineupShape.lineupShape,
     deleteSingleLineup: PropTypes.func,
-    onListingSelection: PropTypes.func,
+    onLineupSelection: PropTypes.func,
   }
 
   lineupClick = (e) => {

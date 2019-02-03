@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
-import './ViewLineup.scss';
+import './Lineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
-import SingleLineup from '../SingleLineup/SingleLineup';
+import LineupForm from '../LineupForm/LineupForm';
+import PlayerForm from '../PlayerForm/PlayerForm';
 
 
-class ViewLineup extends React.Component {
+class Lineup extends React.Component {
   state = {
     lineups: [],
     players: [],
-    selectedLineupId: -1,
+    lineupId: '',
     isEditing: false,
     editId: '-1',
   }
@@ -40,7 +41,7 @@ class ViewLineup extends React.Component {
   };
 
   loadSelectedLineup = (lineupId) => {
-    // alert(lineupId);
+    this.setState({ lineupId });
     playerRequests.getPlayersByLineupId(lineupId)
       .then((players) => {
         this.setState({ players });
@@ -89,6 +90,17 @@ class ViewLineup extends React.Component {
     }
   }
 
+  formSubmitPlayer = (newPlayer) => {
+    playerRequests.postPlayerRequest(newPlayer)
+      .then((lineupId) => {
+        playerRequests.getPlayersByLineupId(lineupId)
+          .then((players) => {
+            this.setState({ players });
+          });
+      })
+      .catch(err => console.error('error with listings post', err));
+  }
+
   passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
 
   render() {
@@ -109,7 +121,7 @@ class ViewLineup extends React.Component {
       lineup={lineup}
       deleteSingleLineup={this.deleteOne}
       key={lineup.id}
-      onSelect={onLineupSelection}
+      // onSelect={onLineupSelection}
       passLineupToEdit={this.passLineupToEdit}
       loadSelectedLineup={this.loadSelectedLineup}
       />
@@ -122,24 +134,32 @@ class ViewLineup extends React.Component {
     ));
 
     return (
-      <div className='ViewLineup'>
+      <div className='Lineup'>
             <p>View Lineup</p>
         <div>
-            <ul>{lineupItems}</ul>
-            <SingleLineup onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
+          <LineupForm 
+          onSubmit={this.formSubmitLineup} 
+          isEditing={isEditing} 
+          editId={editId}
+          />
+          <ul>{lineupItems}</ul>
         </div>
         <div>
         <p>View Lineup</p>
         </div>
         <div>
           <ul>{playerItems}</ul>
+          <PlayerForm
+           onSubmit={this.formSubmitPlayer}
+           onSelect={onLineupSelection}
+           lineupId={this.state.lineupId}
+           />
         </div>
         <div>
-          {/* <SingleLineup/> */}
         </div>
       </div>
     );
   }
 }
 
-export default ViewLineup;
+export default Lineup;
