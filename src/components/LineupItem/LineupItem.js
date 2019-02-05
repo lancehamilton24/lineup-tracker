@@ -9,6 +9,7 @@ import './LineupItem.scss';
 
 class LineupItem extends React.Component {
   static propTypes = {
+    player: lineupShape.playerShape,
     lineup: lineupShape.lineupShape,
     deleteSingleLineup: PropTypes.func,
     onLineupSelection: PropTypes.func,

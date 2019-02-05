@@ -1,7 +1,6 @@
 {
   "player1": {
   "lineupId": "lineup1",
-  "order": 1,
   "name": "Jerry Seinfeld",
   "number": 4,
   "position": "Left Field",
@@ -13,7 +12,6 @@
 },
 "player2": {
   "lineupId": "lineup1",
-  "order": 2,
   "name": "Jerry Seinfeld",
   "number": 7,
   "position": "Left Field",
@@ -25,7 +23,6 @@
 },
 "player3": {
   "lineupId": "lineup1",
-  "order": 3,
   "name": "Jerry Seinfeld",
   "number": 1,
   "position": "Left Field",
@@ -37,7 +34,6 @@
 },
 "player4": {
   "lineupId": "lineup1",
-  "order": 4,
   "name": "Jerry Seinfeld",
   "number": 8,
   "position": "Left Field",
@@ -49,7 +45,6 @@
 },
 "player5": {
   "lineupId": "lineup1",
-  "order": 5,
   "name": "Jerry Seinfeld",
   "number": 9,
   "position": "Left Field",
@@ -61,7 +56,6 @@
 },
 "player6": {
   "lineupId": "lineup2",
-  "order": 1,
   "name": "Jerry Seinfeld",
   "number": 9,
   "position": "Left Field",
@@ -73,7 +67,6 @@
 },
 "player7": {
   "lineupId": "lineup2",
-  "order": 2,
   "name": "Jerry Seinfeld",
   "number": 9,
   "position": "Left Field",
@@ -85,7 +78,6 @@
 },
 "player8": {
   "lineupId": "lineup2",
-  "order": 3,
   "name": "Jerry Seinfeld",
   "number": 10,
   "position": "Left Field",
@@ -97,7 +89,6 @@
 },
 "player9": {
   "lineupId": "lineup2",
-  "order": 4,
   "name": "Jerry Seinfeld",
   "number": 8,
   "position": "Left Field",
@@ -109,7 +100,6 @@
 },
 "player10": {
   "lineupId": "lineup2",
-  "order": 5,
   "name": "Jerry Seinfeld",
   "number": 34,
   "position": "Left Field",
