@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { Button } from 'reactstrap';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
@@ -58,8 +59,8 @@ class Lineup extends React.Component {
         const uid = authRequests.getCurrentUid();
         lineupRequests.getAllLineups(uid)
           .then((lineups) => {
-            this.setState({ lineups })
-            this.setState({ players: [] })
+            this.setState({ lineups });
+            this.setState({ players: [] });
           });
       })
       .catch(err => console.error('error with delete single', err));
@@ -93,10 +94,7 @@ class Lineup extends React.Component {
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
       .then((lineupId) => {
-        playerRequests.getPlayersByLineupId(lineupId)
-          .then((players) => {
-            this.setState({ players });
-          });
+        playerRequests.getPlayersByLineupId(lineupId);
       })
       .catch(err => console.error('error with listings post', err));
   }
@@ -135,20 +133,50 @@ class Lineup extends React.Component {
 
     return (
       <div className='Lineup'>
-            <p>View Lineup</p>
-        <div>
+      <div className='lineupForm'>
           <LineupForm
           onSubmit={this.formSubmitLineup}
           isEditing={isEditing}
           editId={editId}
           />
-          <ul>{lineupItems}</ul>
+          </div>
+        <div>
+          <h2>Current Lineups</h2>
+          <div>{lineupItems}</div>
         </div>
         <div>
         <p>View Lineup</p>
         </div>
         <div>
-          <ul>{playerItems}</ul>
+        <div class="container">
+      <div class="row">
+      <div class="col">
+      <h3>Number</h3>
+      </div>
+      <div class="col">
+      <h3>Name</h3>
+      </div>
+      <div class="col">
+      <h3>Position</h3>
+      </div>
+      <div class="col">
+      <h3>At-Bats</h3>
+      </div>
+      <div class="col">
+      <h3>Hits</h3>
+      </div>
+      <div class="col">
+      <h3>Walks</h3>
+      </div>
+      <div class="col">
+      <h3>Strikeouts</h3>
+      </div>
+      <div class="col">
+      <h3>Innings Pitched</h3>
+      </div>
+      </div>
+      </div>
+          <h5>{playerItems}</h5>
           <PlayerForm
            onSubmit={this.formSubmitPlayer}
            onSelect={onLineupSelection}
