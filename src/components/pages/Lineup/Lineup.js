@@ -44,8 +44,8 @@ class Lineup extends React.Component {
   loadSelectedLineup = (lineupId) => {
     this.setState({ lineupId });
     playerRequests.getPlayersByLineupId(lineupId)
-      .then((lineupId) => {
-        this.setState({ lineupId });
+      .then((players) => {
+        this.setState({ players });
       });
   }
 
@@ -94,8 +94,8 @@ class Lineup extends React.Component {
 
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
-      .then((players) => {
-        this.setState({ players })
+      .then((lineupId) => {
+        this.setState({ lineupId })
         // playerRequests.getPlayersByLineupId(lineupId);
       })
       .catch(err => console.error('error with listings post', err));
