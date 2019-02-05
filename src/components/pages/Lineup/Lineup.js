@@ -44,8 +44,8 @@ class Lineup extends React.Component {
   loadSelectedLineup = (lineupId) => {
     this.setState({ lineupId });
     playerRequests.getPlayersByLineupId(lineupId)
-      .then((players) => {
-        this.setState({ players });
+      .then((lineupId) => {
+        this.setState({ lineupId });
       });
   }
 
