@@ -56,14 +56,7 @@ class LineupForm extends React.Component {
     const { isEditing } = this.props;
     const title = () => {
       if (isEditing) {
-        return <h2>Edit Lineup:</h2>;
-      }
-      return <h2>New Lineup:</h2>;
-    };
-    return (
-      <div className="event-form col">
-        {title()}
-        <form onSubmit={this.formSubmit}>
+        return <form onSubmit={this.formSubmit}>
           <div className="form-group">
             <input
               type="text"
@@ -76,7 +69,13 @@ class LineupForm extends React.Component {
             />
           </div>
           <Button className="btn btn-danger">Save Lineup Name</Button>
-        </form>
+        </form>;
+      }
+      return <h2>New Lineup:</h2>;
+    };
+    return (
+      <div className="event-form col">
+        {title()}
       </div>
     );
   }
