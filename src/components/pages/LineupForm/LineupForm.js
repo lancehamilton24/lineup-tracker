@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+// import { Button } from 'reactstrap';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupRequests from '../../../helpers/data/lineupRequests';
@@ -57,6 +57,7 @@ class LineupForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
+        <h2>Edit Lineup Name</h2>
           <div className="form-group">
             <input
               type="text"
@@ -68,10 +69,22 @@ class LineupForm extends React.Component {
               onChange={this.lineupChange}
             />
           </div>
-          <Button className="btn btn-danger">Save Lineup Name</Button>
         </form>;
       }
-      return <h2>New Lineup:</h2>;
+      return <form onSubmit={this.formSubmit}>
+          <h2>Add New Lineup</h2> 
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="address"
+              aria-describedby="addressHelp"
+              placeholder="Lineup Name"
+              value={newLineupName.lineup}
+              onChange={this.lineupChange}
+            />
+          </div>
+        </form>;
     };
     return (
       <div className="event-form col">

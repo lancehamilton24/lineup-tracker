@@ -20,17 +20,34 @@ class PlayerItem extends React.Component {
     // const uid = authRequests.getCurrentUid();
 
     return (
-      <h4 className="player-item text-center">
-        {player.order}
-        {player.name}
-        {player.number}
-        {player.position}
-        {player.atBats}
-        {player.hits}
-        {player.walks}
-        {player.strikeouts}
-        {player.inningsPitched}
-      </h4>
+    <div class="container">
+    <div class="row">
+      <div class="col">
+      {player.number}
+      </div>
+      <div class="col">
+      {player.name}
+      </div>
+      <div class="col">
+      {player.position}
+      </div>
+      <div class="col">
+      {player.atBats}
+      </div>
+      <div class="col">
+      {player.hits}
+      </div>
+      <div class="col">
+      {player.walks}
+      </div>
+      <div class="col">
+      {player.strikeouts}
+      </div>
+      <div class="col">
+      {player.inningsPitched}
+      </div>
+      </div>
+      </div>
     );
   }
 }
