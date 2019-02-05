@@ -1,0 +1,14 @@
+// @import '../../../styles/_variables.scss';
+
+body {
+  background-image: url('./homecover.jpeg');
+  background-repeat: no-repeat;
+  // background-position: center;
+  background-size: cover;
+  .Auth {
+  display: flex;
+  justify-content: center;
+  padding: 14%;
+  }
+}
+

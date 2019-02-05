@@ -55,11 +55,11 @@ class Lineup extends React.Component {
   deleteOne = (lineupId) => {
     lineupRequests.deleteLineup(lineupId)
       .then(() => {
-        console.log('hello');
         const uid = authRequests.getCurrentUid();
         lineupRequests.getAllLineups(uid)
           .then((lineups) => {
-            this.setState({ lineups });
+            this.setState({ lineups })
+            this.setState({ players: [] })
           });
       })
       .catch(err => console.error('error with delete single', err));
@@ -137,9 +137,9 @@ class Lineup extends React.Component {
       <div className='Lineup'>
             <p>View Lineup</p>
         <div>
-          <LineupForm 
-          onSubmit={this.formSubmitLineup} 
-          isEditing={isEditing} 
+          <LineupForm
+          onSubmit={this.formSubmitLineup}
+          isEditing={isEditing}
           editId={editId}
           />
           <ul>{lineupItems}</ul>

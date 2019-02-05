@@ -76,9 +76,9 @@ class App extends Component {
       return (
         <div className="App">
         <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
-          <div className="row">
+          {/* <div className="row"> */}
             <Auth isAuthenticated={this.isAuthenticated}/>
-          </div>
+          {/* </div> */}
         </div>
       );
     }
