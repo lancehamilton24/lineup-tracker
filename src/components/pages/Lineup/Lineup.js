@@ -85,6 +85,7 @@ class Lineup extends React.Component {
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
               this.setState({ lineups });
+              this.setState({ players: [] })
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -93,13 +94,14 @@ class Lineup extends React.Component {
 
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
-      .then((lineupId) => {
-        playerRequests.getPlayersByLineupId(lineupId);
+      .then((players) => {
+        this.setState({ players })
+        // playerRequests.getPlayersByLineupId(lineupId);
       })
       .catch(err => console.error('error with listings post', err));
   }
 
-  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
+  passLineupToEdit = lineupId => this.setState({ isEditing: false, editId: lineupId });
 
   render() {
     const {
@@ -145,7 +147,7 @@ class Lineup extends React.Component {
           <div>{lineupItems}</div>
         </div>
         <div>
-        <p>View Lineup</p>
+        <h2>View Lineup</h2>
         </div>
         <div>
         <div class="container">
@@ -175,8 +177,9 @@ class Lineup extends React.Component {
       <h3>Innings Pitched</h3>
       </div>
       </div>
+      <h5>{playerItems}</h5>
       </div>
-          <h5>{playerItems}</h5>
+          <h2>Add New Player</h2>
           <PlayerForm
            onSubmit={this.formSubmitPlayer}
            onSelect={onLineupSelection}
