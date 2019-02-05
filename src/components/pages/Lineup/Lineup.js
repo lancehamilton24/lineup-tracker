@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import { Button } from 'reactstrap';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
@@ -93,10 +94,7 @@ class Lineup extends React.Component {
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
       .then((lineupId) => {
-        playerRequests.getPlayersByLineupId(lineupId)
-          .then((players) => {
-            this.setState({ players });
-          });
+        playerRequests.getPlayersByLineupId(lineupId);
       })
       .catch(err => console.error('error with listings post', err));
   }
@@ -135,12 +133,14 @@ class Lineup extends React.Component {
 
     return (
       <div className='Lineup'>
-        <div>
+      <div className='lineupForm'>
           <LineupForm
           onSubmit={this.formSubmitLineup}
           isEditing={isEditing}
           editId={editId}
           />
+          </div>
+        <div>
           <h2>Current Lineups</h2>
           <div>{lineupItems}</div>
         </div>
@@ -176,7 +176,7 @@ class Lineup extends React.Component {
       </div>
       </div>
       </div>
-          <ul>{playerItems}</ul>
+          <h5>{playerItems}</h5>
           <PlayerForm
            onSubmit={this.formSubmitPlayer}
            onSelect={onLineupSelection}
