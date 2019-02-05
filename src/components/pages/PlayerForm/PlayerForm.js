@@ -169,7 +169,7 @@ class PlayerForm extends React.Component {
               aria-describedby="squareFootageHelp"
               placeholder="Innings Pitched"
               value={newPlayer.inningsPitched}
-              onChange={this.inningsPitchedChange}
+              onChange={this.inningsChange}
             />
           </div>
           <button className="btn btn-danger">Save Player</button>

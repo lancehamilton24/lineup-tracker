@@ -12,9 +12,9 @@
 },
 "player2": {
   "lineupId": "lineup1",
-  "name": "Jerry Seinfeld",
+  "name": "Joe Shmo",
   "number": 7,
-  "position": "Left Field",
+  "position": "Right Field",
   "atBats": 2,
   "hits": 2,
   "walks": 2,
@@ -23,9 +23,9 @@
 },
 "player3": {
   "lineupId": "lineup1",
-  "name": "Jerry Seinfeld",
+  "name": "Stan Lee",
   "number": 1,
-  "position": "Left Field",
+  "position": "Center Field",
   "atBats": 2,
   "hits": 2,
   "walks": 2,
@@ -34,9 +34,9 @@
 },
 "player4": {
   "lineupId": "lineup1",
-  "name": "Jerry Seinfeld",
+  "name": "Tony the Tiger",
   "number": 8,
-  "position": "Left Field",
+  "position": "Shortstop",
   "atBats": 2,
   "hits": 2,
   "walks": 2,
@@ -45,9 +45,9 @@
 },
 "player5": {
   "lineupId": "lineup1",
-  "name": "Jerry Seinfeld",
-  "number": 9,
-  "position": "Left Field",
+  "name": "Random Person",
+  "number": 40,
+  "position": "Second Base",
   "atBats": 2,
   "hits": 2,
   "walks": 2,
@@ -55,10 +55,10 @@
   "inningsPitched": 2
 },
 "player6": {
-  "lineupId": "lineup2",
-  "name": "Jerry Seinfeld",
-  "number": 9,
-  "position": "Left Field",
+  "lineupId": "lineup1",
+  "name": "Unknown Person",
+  "number": 29,
+  "position": "Third Base",
   "atBats": 2,
   "hits": 2,
   "walks": 2,
@@ -66,6 +66,39 @@
   "inningsPitched": 2
 },
 "player7": {
+  "lineupId": "lineup1",
+  "name": "Teamate Seven",
+  "number": 39,
+  "position": "Catcher",
+  "atBats": 2,
+  "hits": 2,
+  "walks": 2,
+  "strikeouts": 2,
+  "inningsPitched": 2
+},
+"player8": {
+  "lineupId": "lineup1",
+  "name": "Satchel Paige",
+  "number": 11,
+  "position": "Pitcher",
+  "atBats": 2,
+  "hits": 2,
+  "walks": 2,
+  "strikeouts": 2,
+  "inningsPitched": 2
+},
+"player9": {
+  "lineupId": "lineup1",
+  "name": "Another One",
+  "number": 60,
+  "position": "First Base",
+  "atBats": 2,
+  "hits": 2,
+  "walks": 2,
+  "strikeouts": 2,
+  "inningsPitched": 2
+},
+"player10": {
   "lineupId": "lineup2",
   "name": "Jerry Seinfeld",
   "number": 9,
@@ -76,7 +109,18 @@
   "strikeouts": 2,
   "inningsPitched": 2
 },
-"player8": {
+"player11": {
+  "lineupId": "lineup2",
+  "name": "Jerry Seinfeld",
+  "number": 9,
+  "position": "Left Field",
+  "atBats": 2,
+  "hits": 2,
+  "walks": 2,
+  "strikeouts": 2,
+  "inningsPitched": 2
+},
+"player12": {
   "lineupId": "lineup2",
   "name": "Jerry Seinfeld",
   "number": 10,
@@ -87,7 +131,7 @@
   "strikeouts": 2,
   "inningsPitched": 2
 },
-"player9": {
+"player13": {
   "lineupId": "lineup2",
   "name": "Jerry Seinfeld",
   "number": 8,
@@ -98,7 +142,7 @@
   "strikeouts": 2,
   "inningsPitched": 2
 },
-"player10": {
+"player14": {
   "lineupId": "lineup2",
   "name": "Jerry Seinfeld",
   "number": 34,

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 // import PropTypes from 'prop-types';
 // import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
