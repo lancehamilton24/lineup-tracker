@@ -15,6 +15,6 @@ npm start
 
 ## Screenshots
 
-![homepage](./src/images/homepage.png)
-![lineups](./src/images/lineups.png)
-![lineups1](./src/images/lineups1.png)
+![homepage](./src/images/homepage.PNG)
+![lineups](./src/images/lineups.PNG)
+![lineups1](./src/images/lineups1.PNG)
