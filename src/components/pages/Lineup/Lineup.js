@@ -86,6 +86,7 @@ class Lineup extends React.Component {
             .then((lineups) => {
               this.setState({ lineups });
               this.setState({ players: [] })
+              this.setState({ newLineupName: [] })
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -101,7 +102,7 @@ class Lineup extends React.Component {
       .catch(err => console.error('error with listings post', err));
   }
 
-  passLineupToEdit = lineupId => this.setState({ isEditing: false, editId: lineupId });
+  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
 
   render() {
     const {
