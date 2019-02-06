@@ -54,7 +54,6 @@ class PlayerForm extends React.Component {
     const myPlayer = { ...this.state.newPlayer };
     myPlayer.uid = authRequests.getCurrentUid();
     myPlayer.lineupId = this.props.lineupId;
-    console.log(myPlayer);
     onSubmit(myPlayer);
     this.setState({ newPlayer: defaultPlayer });
   }
