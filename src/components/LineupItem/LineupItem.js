@@ -17,12 +17,13 @@ class LineupItem extends React.Component {
 
   lineupClick = (e) => {
     e.stopPropagation();
-    const { loadSelectedLineup, lineup } = this.props;
+    const { loadSelectedLineup, lineup, onOpenModal } = this.props;
     // const getLineupPlayers = (lineupId) => {
     //   console.log(playerRequests.getPlayersByLineupId(lineupId));
     // };
 
     loadSelectedLineup(lineup.id);
+    onOpenModal();
     console.log(lineup.id);
   }
 
