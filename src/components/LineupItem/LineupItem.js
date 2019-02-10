@@ -17,12 +17,13 @@ class LineupItem extends React.Component {
 
   lineupClick = (e) => {
     e.stopPropagation();
-    const { loadSelectedLineup, lineup } = this.props;
+    const { loadSelectedLineup, lineup, onOpenModal } = this.props;
     // const getLineupPlayers = (lineupId) => {
     //   console.log(playerRequests.getPlayersByLineupId(lineupId));
     // };
 
     loadSelectedLineup(lineup.id);
+    onOpenModal();
     console.log(lineup.id);
   }
 
@@ -53,9 +54,9 @@ class LineupItem extends React.Component {
     );
 
     return (
-      <div className="card">
+      <div className="card" onClick={this.lineupClick}>
       <div className="lineup-item text-center card-body">
-        <span className="col-7" onClick={this.lineupClick}>{lineup.name}</span>
+        <span className="col-7">{lineup.name}</span>
         {makeButtons()}
       </div>
       </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Modal from 'react-responsive-modal';
 // import { Button } from 'reactstrap';
 // import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupItem from '../../LineupItem/LineupItem';
@@ -19,6 +20,7 @@ class Lineup extends React.Component {
     players: [],
     lineupId: '',
     isEditing: false,
+    open: false,
     editId: '-1',
   }
 
@@ -26,6 +28,14 @@ class Lineup extends React.Component {
     lineup: lineupShape.lineupShape,
     onLineupSelection: PropTypes.func,
   }
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+ 
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
 
   lineupSelectEvent = (id) => {
     this.setState({
@@ -110,6 +120,7 @@ class Lineup extends React.Component {
       onLineupSelection,
       isEditing,
       editId,
+      open,
       players,
       // players,
       // selectedLineupId,
@@ -125,6 +136,7 @@ class Lineup extends React.Component {
       // onSelect={onLineupSelection}
       passLineupToEdit={this.passLineupToEdit}
       loadSelectedLineup={this.loadSelectedLineup}
+      onOpenModal={this.onOpenModal}
       />
     ));
     const playerItems = players.map(player => (
@@ -148,9 +160,7 @@ class Lineup extends React.Component {
           <div>{lineupItems}</div>
         </div>
         <div>
-        <h2>View Lineup</h2>
-        </div>
-        <div>
+        <Modal open={open} onClose={this.onCloseModal} center> 
         <div class="container">
       <div class="row">
       <div class="col">
@@ -180,6 +190,7 @@ class Lineup extends React.Component {
       </div>
       <h5>{playerItems}</h5>
       </div>
+      </Modal>
           <h2>Add New Player</h2>
           <PlayerForm
            onSubmit={this.formSubmitPlayer}
