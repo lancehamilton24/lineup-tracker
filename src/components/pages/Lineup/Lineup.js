@@ -190,13 +190,13 @@ class Lineup extends React.Component {
       </div>
       <h5>{playerItems}</h5>
       </div>
-      </Modal>
-          <h2>Add New Player</h2>
+      <h2>Add New Player</h2>
           <PlayerForm
            onSubmit={this.formSubmitPlayer}
            onSelect={onLineupSelection}
            lineupId={this.state.lineupId}
            />
+      </Modal>
         </div>
         <div>
         </div>
