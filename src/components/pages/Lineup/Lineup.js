@@ -32,7 +32,7 @@ class Lineup extends React.Component {
   onOpenModal = () => {
     this.setState({ open: true });
   };
- 
+
   onCloseModal = () => {
     this.setState({ open: false });
   };
@@ -95,8 +95,8 @@ class Lineup extends React.Component {
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
               this.setState({ lineups });
-              this.setState({ players: [] })
-              this.setState({ newLineupName: [] })
+              this.setState({ players: [] });
+              this.setState({ newLineupName: [] });
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -106,8 +106,10 @@ class Lineup extends React.Component {
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
       .then((lineupId) => {
-        this.setState({ lineupId })
-        // playerRequests.getPlayersByLineupId(lineupId);
+        playerRequests.getPlayersByLineupId(lineupId)
+          .then((players) => {
+            this.setState({ newPlayer: players });
+          });
       })
       .catch(err => console.error('error with listings post', err));
   }
@@ -160,31 +162,31 @@ class Lineup extends React.Component {
           <div>{lineupItems}</div>
         </div>
         <div>
-        <Modal open={open} onClose={this.onCloseModal} center> 
-        <div class="container">
-      <div class="row">
-      <div class="col">
+        <Modal open={open} onClose={this.onCloseModal} center>
+        <div className="container">
+      <div className="row">
+      <div className="col">
       <h3>Number</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Name</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Position</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>At-Bats</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Hits</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Walks</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Strikeouts</h3>
       </div>
-      <div class="col">
+      <div className="col">
       <h3>Innings Pitched</h3>
       </div>
       </div>
@@ -195,6 +197,7 @@ class Lineup extends React.Component {
            onSubmit={this.formSubmitPlayer}
            onSelect={onLineupSelection}
            lineupId={this.state.lineupId}
+           loadSelectedLineup={this.loadSelectedLineup}
            />
       </Modal>
         </div>
