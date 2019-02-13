@@ -76,96 +76,76 @@ class PlayerForm extends React.Component {
       <div className="player-form">
         <form class="pure-form" onSubmit={this.formPlayerSubmit}>
         <div class="top-row">
-          <div className="form-group">
+          <div className="form-group" id="top-row">
             <label htmlFor="player">Player Name:</label>
             <input
               type="text"
-              id="top-row"
-              aria-describedby="addressHelp"
               placeholder="Name"
               value={newPlayer.name}
               onChange={this.playerNameChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="top-row">
             <label htmlFor="imageUrl">Position:</label>
             <input
               type="text"
-              
-              id="top-row"
-              aria-describedby="imageUrlHelp"
               placeholder="Position"
               value={newPlayer.position}
               onChange={this.positionChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="squareFootage">Number:</label>
+          <div className="form-group" id="top-row">
+            <label htmlFor="Number">Number:</label>
             <input
               type="text"
-              id="top-row"
-              aria-describedby="squareFootageHelp"
               placeholder="Number"
               value={newPlayer.number}
               onChange={this.numberChange}
             />
           </div>
           </div>
-          <div className="form-group">
+          <div className="battingStats">
+          <div className="form-group" id="battingStats">
             <label htmlFor="squareFootage">At Bats:</label>
             <input
               type="text"
-              
-              id="squareFootage"
-              aria-describedby="squareFootageHelp"
               placeholder="At Bats"
               value={newPlayer.atBats}
               onChange={this.atBatChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="battingStats">
             <label htmlFor="squareFootage">Hits:</label>
             <input
               type="text"
-              
-              id="squareFootage"
-              aria-describedby="squareFootageHelp"
               placeholder="Hits"
               value={newPlayer.hits}
               onChange={this.hitChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="battingStats">
             <label htmlFor="squareFootage">Walks:</label>
             <input
               type="text"
-              
-              id="squareFootage"
-              aria-describedby="squareFootageHelp"
               placeholder="Walks"
               value={newPlayer.walks}
               onChange={this.walkChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group" id="battingStats">
             <label htmlFor="squareFootage">Strikeouts:</label>
             <input
               type="text"
-              
-              id="squareFootage"
-              aria-describedby="squareFootageHelp"
               placeholder="Strike-outs"
               value={newPlayer.strikeouts}
               onChange={this.strikeoutChange}
             />
           </div>
+          </div>
           <div className="form-group">
             <label htmlFor="squareFootage">IP:</label>
             <input
               type="text"
-              
-              id="squareFootage"
-              aria-describedby="squareFootageHelp"
               placeholder="Innings Pitched"
               value={newPlayer.inningsPitched}
               onChange={this.inningsChange}

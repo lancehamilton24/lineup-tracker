@@ -18,8 +18,16 @@
 
 .top-row {
   display: flex;
+  justify-content: center;
   #top-row {
-    
+    padding: 1%;
+  }
+}
+
+.battingStats {
+  display: flex;
+  #battingStats {
+    padding: 1%;
   }
 }
 // .col {
