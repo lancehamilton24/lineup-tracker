@@ -73,14 +73,14 @@ class PlayerForm extends React.Component {
     const { newPlayer } = this.state;
     // const { isEditing } = this.props;
     return (
-      <div className="player-form col">
-        <form onSubmit={this.formPlayerSubmit}>
+      <div className="player-form">
+        <form class="pure-form" onSubmit={this.formPlayerSubmit}>
+        <div class="top-row">
           <div className="form-group">
             <label htmlFor="player">Player Name:</label>
             <input
               type="text"
-              className="form-control"
-              id="address"
+              id="top-row"
               aria-describedby="addressHelp"
               placeholder="Name"
               value={newPlayer.name}
@@ -91,8 +91,8 @@ class PlayerForm extends React.Component {
             <label htmlFor="imageUrl">Position:</label>
             <input
               type="text"
-              className="form-control"
-              id="imageUrl"
+              
+              id="top-row"
               aria-describedby="imageUrlHelp"
               placeholder="Position"
               value={newPlayer.position}
@@ -103,19 +103,19 @@ class PlayerForm extends React.Component {
             <label htmlFor="squareFootage">Number:</label>
             <input
               type="text"
-              className="form-control"
-              id="squareFootage"
+              id="top-row"
               aria-describedby="squareFootageHelp"
               placeholder="Number"
               value={newPlayer.number}
               onChange={this.numberChange}
             />
           </div>
+          </div>
           <div className="form-group">
             <label htmlFor="squareFootage">At Bats:</label>
             <input
               type="text"
-              className="form-control"
+              
               id="squareFootage"
               aria-describedby="squareFootageHelp"
               placeholder="At Bats"
@@ -127,7 +127,7 @@ class PlayerForm extends React.Component {
             <label htmlFor="squareFootage">Hits:</label>
             <input
               type="text"
-              className="form-control"
+              
               id="squareFootage"
               aria-describedby="squareFootageHelp"
               placeholder="Hits"
@@ -139,7 +139,7 @@ class PlayerForm extends React.Component {
             <label htmlFor="squareFootage">Walks:</label>
             <input
               type="text"
-              className="form-control"
+              
               id="squareFootage"
               aria-describedby="squareFootageHelp"
               placeholder="Walks"
@@ -151,7 +151,7 @@ class PlayerForm extends React.Component {
             <label htmlFor="squareFootage">Strikeouts:</label>
             <input
               type="text"
-              className="form-control"
+              
               id="squareFootage"
               aria-describedby="squareFootageHelp"
               placeholder="Strike-outs"
@@ -163,7 +163,7 @@ class PlayerForm extends React.Component {
             <label htmlFor="squareFootage">IP:</label>
             <input
               type="text"
-              className="form-control"
+              
               id="squareFootage"
               aria-describedby="squareFootageHelp"
               placeholder="Innings Pitched"

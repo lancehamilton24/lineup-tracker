@@ -162,7 +162,7 @@ class Lineup extends React.Component {
           <div>{lineupItems}</div>
         </div>
         <div>
-        <Modal open={open} onClose={this.onCloseModal} center>
+        <Modal className="modal" open={open} onClose={this.onCloseModal} center>
         <div className="container">
       <div className="row">
       <div className="col">
