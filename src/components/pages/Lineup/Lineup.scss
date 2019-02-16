@@ -2,7 +2,14 @@
   background-color: rgb(51, 167, 51) !important;
   width: 100%;
   margin: 2%;
-  opacity: 0.5;
+}
+
+.existingLineups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .lineupForm {

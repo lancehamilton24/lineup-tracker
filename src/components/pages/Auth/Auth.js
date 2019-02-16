@@ -1,9 +1,9 @@
 import React from 'react';
+import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import './Auth.scss';
 import authRequests from '../../../helpers/data/authRequests';
-
-import googleButton from './googlebutton.png';
+import bats1 from './bats1.png';
 
 class Auth extends React.Component {
   static propTypes = {
@@ -21,9 +21,10 @@ class Auth extends React.Component {
     return (
       <div className='Auth' id='hello'>
       <div className="authentication">
-        <button className='btn btn-danger' onClick={this.authenticateUser}>
-          <img src={googleButton} alt="google login button"/>
+        <button className="login" onClick={this.authenticateUser}>
+        <h1>Login</h1>
         </button>
+        <img src={bats1}/> 
         </div>
       </div>
     );

@@ -158,8 +158,7 @@ class Lineup extends React.Component {
           />
           </div>
         <div>
-          <h2>Current Lineups</h2>
-          <div>{lineupItems}</div>
+          <div className="existingLineups">{lineupItems}</div>
         </div>
         <div>
         <Modal className="modal" open={open} onClose={this.onCloseModal} center>
