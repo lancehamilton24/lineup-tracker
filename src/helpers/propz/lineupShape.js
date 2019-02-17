@@ -7,7 +7,6 @@ const lineupShape = PropTypes.shape({
 
 const playerShape = PropTypes.shape({
   lineupId: PropTypes.string.isRequired,
-  order: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.number.isRequired,
   position: PropTypes.string.isRequired,
@@ -15,7 +14,6 @@ const playerShape = PropTypes.shape({
   hits: PropTypes.number.isRequired,
   walks: PropTypes.number.isRequired,
   strikeouts: PropTypes.number.isRequired,
-  inningsPitched: PropTypes.number.isRequired,
 })
 
 const lineupOptionalShape = PropTypes.oneOfType([

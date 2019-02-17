@@ -178,9 +178,6 @@ class Lineup extends React.Component {
                 <div className="col">
                   <h3>Strikeouts</h3>
                 </div>
-                <div className="col">
-                  <h3>Innings Pitched</h3>
-                </div>
               </div>
               <hr></hr>
               <h5>{playerItems}</h5>

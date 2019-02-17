@@ -16,32 +16,30 @@ class PlayerItem extends React.Component {
     const { player } = this.props;
 
     return (
-      <div class="playerFormat container">
-        <div class="individualPlayer row">
-          <div class="col">
+      <div className="playerFormat container">
+        <div className="individualPlayer row">
+          <div className="col">
             {player.number}
           </div>
-          <div class="col">
+          <div className="col">
             {player.name}
           </div>
-          <div class="col">
+          <div className="col">
             {player.position}
           </div>
-          <div class="col">
+          <div className="col">
             {player.atBats}
           </div>
-          <div class="col">
+          <div className="col">
             {player.hits}
           </div>
-          <div class="col">
+          <div className="col">
             {player.walks}
           </div>
-          <div class="col">
+          <div className="col">
             {player.strikeouts}
           </div>
-          <div class="col">
-            {player.inningsPitched}
-          </div>
+
         </div>
         <hr></hr>
       </div>

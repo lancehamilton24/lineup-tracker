@@ -11,7 +11,6 @@ const defaultPlayer = {
   hits: 0,
   walks: 0,
   strikeouts: 0,
-  inningsPitched: 0
 };
 
 class PlayerForm extends React.Component {
@@ -45,8 +44,6 @@ class PlayerForm extends React.Component {
 
   strikeoutChange = e => this.formFieldStringAndNumberState('strikeouts', e);
 
-  inningsChange = e => this.formFieldStringAndNumberState('inningsPitched', e);
-
   formPlayerSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
@@ -61,9 +58,9 @@ class PlayerForm extends React.Component {
     const { newPlayer } = this.state;
     return (
       <div className="newPlayerForm">
-        <form class="pure-form" onSubmit={this.formPlayerSubmit}>
+        <form className="pure-form" onSubmit={this.formPlayerSubmit}>
         <h2>Add New Player</h2>
-          <div class="basicLineup">
+          <div className="basicLineup">
             <div className="form-group" id="basicStats">
               <label>Player Name:</label>
               <input
@@ -129,15 +126,6 @@ class PlayerForm extends React.Component {
                 onChange={this.strikeoutChange}
               />
             </div>
-          </div>
-          <div className="form-group">
-            <label>IP:</label>
-            <input
-              type="text"
-              placeholder="Innings Pitched"
-              value={newPlayer.inningsPitched}
-              onChange={this.inningsChange}
-            />
           </div>
           <button className="btn btn-danger">Save Player</button>
         </form>
