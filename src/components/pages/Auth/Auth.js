@@ -20,8 +20,9 @@ class Auth extends React.Component {
     return (
       <div className='auth'>
       <div className="container authentication">
+      <h1 className="welcome">Welcome to Lineup Tracker!</h1>
         <img src={baseball} onClick={this.authenticateUser}/> 
-        <div className="centered">sign in</div>
+        <div className="centered">Click to Sign In</div>
         </div>
       </div>
     );

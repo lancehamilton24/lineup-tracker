@@ -9,13 +9,17 @@ body {
   .auth {
   display: flex;
   justify-content: center;
+    .welcome {
+      font-size: 5vw;
+      color: white;
+    }
     .authentication {
       // display: flex;
       // flex-direction: column;
       // justify-content: center;
       position: relative;
       text-align: center;
-      padding: 5%;
+      padding: 2%;
       .centered {
         position: absolute;
         top: 50%;
