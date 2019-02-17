@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './PlayerForm.scss';
 import authRequests from '../../../helpers/data/authRequests';
-// import playerRequests from '../../../helpers/data/playerRequests';
 
 const defaultPlayer = {
   name: '',
@@ -58,92 +57,80 @@ class PlayerForm extends React.Component {
     this.setState({ newPlayer: defaultPlayer });
   }
 
-  // componentDidUpdate(prevProps) {
-  //   const { isEditing, editId } = this.props;
-  //   if (prevProps !== this.props && isEditing) {
-  //     eventRequests.getSingleEvent(editId)
-  //       .then((event) => {
-  //         this.setState({ newListing: event.data });
-  //       })
-  //       .catch(err => console.error('error with getSingleListing', err));
-  //   }
-  // }
-
   render() {
     const { newPlayer } = this.state;
-    // const { isEditing } = this.props;
     return (
-      <div className="player-form">
+      <div className="newPlayerForm">
         <form class="pure-form" onSubmit={this.formPlayerSubmit}>
-        <div class="top-row">
-          <div className="form-group" id="top-row">
-            <label htmlFor="player">Player Name:</label>
-            <input
-              type="text"
-              placeholder="Name"
-              value={newPlayer.name}
-              onChange={this.playerNameChange}
-            />
+          <div class="basicLineup">
+            <div className="form-group" id="basicStats">
+              <label>Player Name:</label>
+              <input
+                type="text"
+                placeholder="Name"
+                value={newPlayer.name}
+                onChange={this.playerNameChange}
+              />
+            </div>
+            <div className="form-group" id="basicStats">
+              <label>Position:</label>
+              <input
+                type="text"
+                placeholder="Position"
+                value={newPlayer.position}
+                onChange={this.positionChange}
+              />
+            </div>
+            <div className="form-group" id="basicStats">
+              <label>Number:</label>
+              <input
+                type="text"
+                placeholder="Number"
+                value={newPlayer.number}
+                onChange={this.numberChange}
+              />
+            </div>
           </div>
-          <div className="form-group" id="top-row">
-            <label htmlFor="imageUrl">Position:</label>
-            <input
-              type="text"
-              placeholder="Position"
-              value={newPlayer.position}
-              onChange={this.positionChange}
-            />
-          </div>
-          <div className="form-group" id="top-row">
-            <label htmlFor="Number">Number:</label>
-            <input
-              type="text"
-              placeholder="Number"
-              value={newPlayer.number}
-              onChange={this.numberChange}
-            />
-          </div>
-          </div>
-          <div className="battingStats">
-          <div className="form-group" id="battingStats">
-            <label htmlFor="squareFootage">At Bats:</label>
-            <input
-              type="text"
-              placeholder="At Bats"
-              value={newPlayer.atBats}
-              onChange={this.atBatChange}
-            />
-          </div>
-          <div className="form-group" id="battingStats">
-            <label htmlFor="squareFootage">Hits:</label>
-            <input
-              type="text"
-              placeholder="Hits"
-              value={newPlayer.hits}
-              onChange={this.hitChange}
-            />
-          </div>
-          <div className="form-group" id="battingStats">
-            <label htmlFor="squareFootage">Walks:</label>
-            <input
-              type="text"
-              placeholder="Walks"
-              value={newPlayer.walks}
-              onChange={this.walkChange}
-            />
-          </div>
-          <div className="form-group" id="battingStats">
-            <label htmlFor="squareFootage">Strikeouts:</label>
-            <input
-              type="text"
-              placeholder="Strike-outs"
-              value={newPlayer.strikeouts}
-              onChange={this.strikeoutChange}
-            />
-          </div>
+          <div className="battingLineup">
+            <div className="form-group" id="battingStats">
+              <label>At Bats:</label>
+              <input
+                type="text"
+                placeholder="At Bats"
+                value={newPlayer.atBats}
+                onChange={this.atBatChange}
+              />
+            </div>
+            <div className="form-group" id="battingStats">
+              <label>Hits:</label>
+              <input
+                type="text"
+                placeholder="Hits"
+                value={newPlayer.hits}
+                onChange={this.hitChange}
+              />
+            </div>
+            <div className="form-group" id="battingStats">
+              <label>Walks:</label>
+              <input
+                type="text"
+                placeholder="Walks"
+                value={newPlayer.walks}
+                onChange={this.walkChange}
+              />
+            </div>
+            <div className="form-group" id="battingStats">
+              <label>Strikeouts:</label>
+              <input
+                type="text"
+                placeholder="Strike-outs"
+                value={newPlayer.strikeouts}
+                onChange={this.strikeoutChange}
+              />
+            </div>
           </div>
           <div className="form-group">
-            <label htmlFor="squareFootage">IP:</label>
+            <label>IP:</label>
             <input
               type="text"
               placeholder="Innings Pitched"

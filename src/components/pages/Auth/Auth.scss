@@ -6,56 +6,27 @@ body {
   background-repeat: no-repeat;
   // background-position: center;
   background-size: cover;
-  .Auth {
+  .auth {
   display: flex;
   justify-content: center;
-  padding: 14%;
     .authentication {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 5%;
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     }
   }
   img {
-    height: 30%;
-    width: 100%;
-    margin: 5%;
+    height: 25vw;
+    width: 25vw;
   }
-  .login{
-  background:black;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-.login:hover{
-  background:#fff;
-  color:#1AAB8A;
-}
-.login:before,.login:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #1AAB8A;
-  transition:400ms ease all;
-}
-.login:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.login:hover:before,.login:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
 }
 

@@ -1,8 +1,12 @@
-.Lineup {
+.lineups {
   background-color: rgb(51, 167, 51) !important;
   width: 100%;
   margin: 2%;
 }
+
+// .container {
+//   background-color: red !important;
+// }
 
 .existingLineups {
   display: flex;
@@ -23,15 +27,15 @@
   max-width: 90%;
 }
 
-.top-row {
+.basicLineup {
   display: flex;
   justify-content: center;
-  #top-row {
+  #basicStats {
     padding: 1%;
   }
 }
 
-.battingStats {
+.battingLineup {
   display: flex;
   justify-content: center;
   #battingStats {

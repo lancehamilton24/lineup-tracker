@@ -1,9 +1,8 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import './Auth.scss';
 import authRequests from '../../../helpers/data/authRequests';
-import bats1 from './bats1.png';
+import baseball from '../../../images/baseball.png';
 
 class Auth extends React.Component {
   static propTypes = {
@@ -19,12 +18,10 @@ class Auth extends React.Component {
 
   render() {
     return (
-      <div className='Auth' id='hello'>
-      <div className="authentication">
-        <button className="login" onClick={this.authenticateUser}>
-        <h1>Login</h1>
-        </button>
-        <img src={bats1}/> 
+      <div className='auth'>
+      <div className="container authentication">
+        <img src={baseball} onClick={this.authenticateUser}/> 
+        <div className="centered">sign in</div>
         </div>
       </div>
     );

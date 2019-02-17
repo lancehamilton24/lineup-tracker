@@ -1,6 +1,5 @@
 import axios from 'axios';
 import apiKeys from '../apiKeys';
-// import lineupRequests from './lineupRequests';
 
 const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
