@@ -87,7 +87,7 @@ class App extends Component {
           <BrowserRouter>
           <React.Fragment>
             <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
-            <div className='container'>
+            <div className='appContain container'>
             <div className='row'>
                 <Switch>
                   <PrivateRoute path='/' exact component={Lineup} authed={this.state.authed} />

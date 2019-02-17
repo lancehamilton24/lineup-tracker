@@ -3,10 +3,12 @@
 .card {
   margin: 1%;
   background-image: $background-card !important;
+  background-color: black !important;
+  color: white;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: 20vw;
-  width: 15vw;
+  width: 20vw;
   font-size: 2vw;
 }
