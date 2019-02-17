@@ -185,7 +185,6 @@ class Lineup extends React.Component {
               <hr></hr>
               <h5>{playerItems}</h5>
             </div>
-            <h2>Add New Player</h2>
             <PlayerForm
               onSubmit={this.formSubmitPlayer}
               onSelect={onLineupSelection}

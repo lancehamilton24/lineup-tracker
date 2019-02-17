@@ -17,7 +17,7 @@ class PlayerItem extends React.Component {
 
     return (
       <div class="playerFormat container">
-        <div class="row">
+        <div class="individualPlayer row">
           <div class="col">
             {player.number}
           </div>
@@ -43,6 +43,7 @@ class PlayerItem extends React.Component {
             {player.inningsPitched}
           </div>
         </div>
+        <hr></hr>
       </div>
     );
   }

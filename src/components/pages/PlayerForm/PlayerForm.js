@@ -62,6 +62,7 @@ class PlayerForm extends React.Component {
     return (
       <div className="newPlayerForm">
         <form class="pure-form" onSubmit={this.formPlayerSubmit}>
+        <h2>Add New Player</h2>
           <div class="basicLineup">
             <div className="form-group" id="basicStats">
               <label>Player Name:</label>
