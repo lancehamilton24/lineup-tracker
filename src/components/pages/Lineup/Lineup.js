@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
+import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
 import './Lineup.scss';
@@ -94,7 +95,7 @@ class Lineup extends React.Component {
             .then((lineups) => {
               this.setState({ lineups });
               this.setState({ players: [] });
-              this.setState({ newLineupName: [] });
+              this.setState({ newLineupName: '' });
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -182,12 +183,16 @@ class Lineup extends React.Component {
               <hr></hr>
               <h5>{playerItems}</h5>
             </div>
+            <ModalFooter>
+              <div className="playerForm">
             <PlayerForm
               onSubmit={this.formSubmitPlayer}
               onSelect={onLineupSelection}
               lineupId={this.state.lineupId}
               loadSelectedLineup={this.loadSelectedLineup}
             />
+            </div>
+            </ModalFooter>
           </Modal>
         </div>
         <div>

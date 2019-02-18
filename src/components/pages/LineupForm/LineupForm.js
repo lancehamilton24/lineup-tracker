@@ -43,7 +43,7 @@ class LineupForm extends React.Component {
     if (prevProps !== this.props && isEditing) {
       lineupRequests.getSingleLineup(editId)
         .then((lineup) => {
-          this.setState({ newListing: lineup.data });
+          this.setState({ newLineup: lineup.data });
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
@@ -55,7 +55,7 @@ class LineupForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
-        <h2>Edit Lineup Name</h2>
+        <h2>Edit Your Lineup Here</h2>
           <div className="input-group editLineupForm">
             <input
               type="text"
@@ -71,7 +71,7 @@ class LineupForm extends React.Component {
         </form>;
       }
       return <form className="lineupAddition" onSubmit={this.formSubmit}>
-          <h2>Add New Lineup</h2> 
+          <h2>Add New Lineup Here</h2> 
           <div className="input-group newLineupForm">
             <input
               type="text"
