@@ -1,3 +1,13 @@
-addEditLineup {
+.addEditLineup {
+  display: flex;
+  justify-content: center;
   border-radius: 25px;
+  width: 30vw;
+  padding: 3%;
+  background-color: green !important;
+  text-align: center;
+}
+
+.lineupAddition {
+  width: 20vw;
 }

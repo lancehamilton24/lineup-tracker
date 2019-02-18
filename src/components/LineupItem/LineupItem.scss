@@ -1,4 +1,5 @@
 @import '../../styles/_variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Coiny');
 
 .card {
   margin: 1%;
@@ -8,7 +9,8 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 68%;
-  height: 20vw;
-  width: 20vw;
+  height: 18vw;
+  width: 27%;
   font-size: 2vw;
+  font-family: 'Coiny', cursive;
 }

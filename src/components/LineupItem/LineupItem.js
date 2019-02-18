@@ -51,10 +51,14 @@ class LineupItem extends React.Component {
 
     return (
       <div className="lineupCards card">
-      <div className="text-center card-body">
+      <div className="text-center card-header">
         <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
       </div>
+      <div class="card-body">
+  </div>
+      <div className="card-footer text-muted">
       {makeButtons()}
+      </div>
       </div>
     );
   }

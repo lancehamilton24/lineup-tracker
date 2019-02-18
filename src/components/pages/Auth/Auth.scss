@@ -1,4 +1,5 @@
 @import '../../../styles/_variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Coiny');
 
 body {
   background-color: $background-color !important;
@@ -12,6 +13,7 @@ body {
     .welcome {
       font-size: 5vw;
       color: white;
+      font-family: 'Coiny', cursive;
     }
     .authentication {
       // display: flex;
@@ -22,13 +24,18 @@ body {
       padding: 2%;
       .centered {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 60%;
+        left: 48%;
         transform: translate(-50%, -50%);
+        font-family: 'Coiny', cursive;
+        h1 {
+          font-size: 3rem;
+        }
       }
     }
   }
   img {
+    margin: 5%;
     height: 25vw;
     width: 25vw;
   }

@@ -56,22 +56,23 @@ class LineupForm extends React.Component {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
         <h2>Edit Lineup Name</h2>
-          <div className="form-group editLineupForm">
+          <div className="input-group editLineupForm">
             <input
               type="text"
               className="form-control"
-              id="address"
-              aria-describedby="addressHelp"
               placeholder="Lineup Name"
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
+            <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary">Submit</button>
+            </div>
           </div>
         </form>;
       }
-      return <form onSubmit={this.formSubmit}>
+      return <form className="lineupAddition" onSubmit={this.formSubmit}>
           <h2>Add New Lineup</h2> 
-          <div className="form-group newLineupForm">
+          <div className="input-group newLineupForm">
             <input
               type="text"
               className="form-control"
@@ -79,11 +80,14 @@ class LineupForm extends React.Component {
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
+            <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary">Submit</button>
+            </div>
           </div>
         </form>;
     };
     return (
-      <div className="addEditLineup col">
+      <div className="addEditLineup">
         {title()}
       </div>
     );
