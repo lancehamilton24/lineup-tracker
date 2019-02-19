@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
-// import playerRequests from '../../helpers/data/playerRequests';
 import lineupShape from '../../helpers/propz/lineupShape';
-// import authRequests from '../../helpers/data/authRequests';
 
 import './LineupItem.scss';
 
@@ -18,13 +16,8 @@ class LineupItem extends React.Component {
   lineupClick = (e) => {
     e.stopPropagation();
     const { loadSelectedLineup, lineup, onOpenModal } = this.props;
-    // const getLineupPlayers = (lineupId) => {
-    //   console.log(playerRequests.getPlayersByLineupId(lineupId));
-    // };
-
     loadSelectedLineup(lineup.id);
     onOpenModal();
-    console.log(lineup.id);
   }
 
   editLineup = (e) => {
@@ -41,23 +34,30 @@ class LineupItem extends React.Component {
 
   render() {
     const { lineup } = this.props;
-    // const uid = authRequests.getCurrentUid();
     const makeButtons = () => (
           <div>
-            <span className="col">
-              <Button className="btn btn-default" onClick={this.deleteLineup}>Delete</Button>
+            <span className="editLineup col">
+              <Button outline color="info" onClick={this.editLineup}>
+                Edit
+              </Button>
             </span>
-            <span className="col">
-              <Button className="btn btn-default" onClick={this.editLineup}>Edit</Button>
+            <span className="deleteLineup col">
+              <Button outline color="danger" onClick={this.deleteLineup}>
+              Delete
+              </Button>
             </span>
           </div>
     );
 
     return (
-      <div className="card">
-      <div className="lineup-item text-center card-body">
-        <span className="col-7" onClick={this.lineupClick}>{lineup.name}</span>
-        {makeButtons()}
+      <div className="lineupCards card">
+      <div className="text-center card-header">
+        <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
+      </div>
+      <div class="card-body">
+  </div>
+      <div className="card-footer text-muted">
+      {makeButtons()}
       </div>
       </div>
     );

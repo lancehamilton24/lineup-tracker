@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Button } from 'reactstrap';
-// import lineupShape from '../../../helpers/propz/lineupShape';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import './LineupForm.scss';
@@ -45,7 +43,7 @@ class LineupForm extends React.Component {
     if (prevProps !== this.props && isEditing) {
       lineupRequests.getSingleLineup(editId)
         .then((lineup) => {
-          this.setState({ newListing: lineup.data });
+          this.setState({ newLineup: lineup.data });
         })
         .catch(err => console.error('error with getSingleListing', err));
     }
@@ -57,37 +55,39 @@ class LineupForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
-        <h2>Edit Lineup Name</h2>
-          <div className="form-group">
+        <h2>Edit Your Lineup Here</h2>
+          <div className="input-group editLineupForm">
             <input
               type="text"
               className="form-control"
-              id="address"
-              aria-describedby="addressHelp"
               placeholder="Lineup Name"
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
+            <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary">Submit</button>
+            </div>
           </div>
         </form>;
       }
-      return <form onSubmit={this.formSubmit}>
-          <h2>Add New Lineup</h2> 
-          <div className="form-group">
+      return <form className="lineupAddition" onSubmit={this.formSubmit}>
+          <h2>Add New Lineup Here</h2> 
+          <div className="input-group newLineupForm">
             <input
               type="text"
               className="form-control"
-              id="address"
-              aria-describedby="addressHelp"
               placeholder="Lineup Name"
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
+            <div class="input-group-append">
+            <button type="button" class="btn btn-outline-warning">Submit</button>
+            </div>
           </div>
         </form>;
     };
     return (
-      <div className="event-form col">
+      <div className="addEditLineup">
         {title()}
       </div>
     );

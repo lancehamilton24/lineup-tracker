@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
-// import { Button } from 'reactstrap';
-// import lineupShape from '../../../helpers/propz/lineupShape';
+import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
 import './Lineup.scss';
@@ -96,7 +95,7 @@ class Lineup extends React.Component {
             .then((lineups) => {
               this.setState({ lineups });
               this.setState({ players: [] });
-              this.setState({ newLineupName: [] });
+              this.setState({ newLineupName: '' });
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -124,82 +123,77 @@ class Lineup extends React.Component {
       editId,
       open,
       players,
-      // players,
-      // selectedLineupId,
     } = this.state;
 
-    // const selectedLineup = lineups.find(lineup => lineup.id === selectedLineupId) || { nope: 'nope' };
-    // console.log(selectedLineup);
     const lineupItems = lineups.map(lineup => (
       <LineupItem
-      lineup={lineup}
-      deleteSingleLineup={this.deleteOne}
-      key={lineup.id}
-      // onSelect={onLineupSelection}
-      passLineupToEdit={this.passLineupToEdit}
-      loadSelectedLineup={this.loadSelectedLineup}
-      onOpenModal={this.onOpenModal}
+        lineup={lineup}
+        deleteSingleLineup={this.deleteOne}
+        key={lineup.id}
+        passLineupToEdit={this.passLineupToEdit}
+        loadSelectedLineup={this.loadSelectedLineup}
+        onOpenModal={this.onOpenModal}
       />
     ));
     const playerItems = players.map(player => (
       <PlayerItem
-      player={player}
-      key={player.id}
+        player={player}
+        key={player.id}
       />
     ));
 
     return (
-      <div className='Lineup'>
-      <div className='lineupForm'>
+      <div className='lineups'>
+        <div className='lineupForm'>
           <LineupForm
-          onSubmit={this.formSubmitLineup}
-          isEditing={isEditing}
-          editId={editId}
+            onSubmit={this.formSubmitLineup}
+            isEditing={isEditing}
+            editId={editId}
           />
-          </div>
-        <div>
-          <h2>Current Lineups</h2>
-          <div>{lineupItems}</div>
         </div>
         <div>
-        <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-        <div className="container">
-      <div className="row">
-      <div className="col">
-      <h3>Number</h3>
-      </div>
-      <div className="col">
-      <h3>Name</h3>
-      </div>
-      <div className="col">
-      <h3>Position</h3>
-      </div>
-      <div className="col">
-      <h3>At-Bats</h3>
-      </div>
-      <div className="col">
-      <h3>Hits</h3>
-      </div>
-      <div className="col">
-      <h3>Walks</h3>
-      </div>
-      <div className="col">
-      <h3>Strikeouts</h3>
-      </div>
-      <div className="col">
-      <h3>Innings Pitched</h3>
-      </div>
-      </div>
-      <h5>{playerItems}</h5>
-      </div>
-      <h2>Add New Player</h2>
-          <PlayerForm
-           onSubmit={this.formSubmitPlayer}
-           onSelect={onLineupSelection}
-           lineupId={this.state.lineupId}
-           loadSelectedLineup={this.loadSelectedLineup}
-           />
-      </Modal>
+          <div className="existingLineups">{lineupItems}</div>
+        </div>
+        <div>
+          <Modal className="modal" open={open} onClose={this.onCloseModal} center>
+            <div className="container">
+              <div className="row">
+                <div className="col">
+                  <h3>Number</h3>
+                </div>
+                <div className="col">
+                  <h3>Name</h3>
+                </div>
+                <div className="col">
+                  <h3>Position</h3>
+                </div>
+                <div className="col">
+                  <h3>At-Bats</h3>
+                </div>
+                <div className="col">
+                  <h3>Hits</h3>
+                </div>
+                <div className="col">
+                  <h3>Walks</h3>
+                </div>
+                <div className="col">
+                  <h3>Strikeouts</h3>
+                </div>
+              </div>
+              <hr></hr>
+              <h5>{playerItems}</h5>
+            </div>
+            <ModalFooter>
+              <div className="playerForm">
+            <PlayerForm
+              onSubmit={this.formSubmitPlayer}
+              onSelect={onLineupSelection}
+              lineupId={this.state.lineupId}
+              loadSelectedLineup={this.loadSelectedLineup}
+            />
+            </div>
+            </ModalFooter>
+          </Modal>
         </div>
         <div>
         </div>

@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Auth.scss';
 import authRequests from '../../../helpers/data/authRequests';
-
-import googleButton from './googlebutton.png';
+import baseball from '../../../images/baseball.png';
 
 class Auth extends React.Component {
   static propTypes = {
@@ -19,11 +18,13 @@ class Auth extends React.Component {
 
   render() {
     return (
-      <div className='Auth' id='hello'>
-      <div className="authentication">
-        <button className='btn btn-danger' onClick={this.authenticateUser}>
-          <img src={googleButton} alt="google login button"/>
-        </button>
+      <div className='auth'>
+      <div className="container authentication">
+      <h1 className="welcome">Welcome to Lineup Tracker!</h1>
+        <img src={baseball} onClick={this.authenticateUser}/> 
+        <div className="centered"><h1>Click</h1>
+        <h3>To Sign In</h3>
+        </div>
         </div>
       </div>
     );
