@@ -82,7 +82,7 @@ class PlayerForm extends React.Component {
               <h5>Number</h5>
               <input
                 type="text"
-                placeholder="Number"
+                placeholder="0"
                 value={newPlayer.number}
                 onChange={this.numberChange}
               />
@@ -93,7 +93,7 @@ class PlayerForm extends React.Component {
               <h5>At Bats</h5>
               <input
                 type="text"
-                placeholder="At Bats"
+                placeholder="0"
                 value={newPlayer.atBats}
                 onChange={this.atBatChange}
               />
@@ -102,7 +102,7 @@ class PlayerForm extends React.Component {
               <h5>Hits</h5>
               <input
                 type="text"
-                placeholder="Hits"
+                placeholder="0"
                 value={newPlayer.hits}
                 onChange={this.hitChange}
               />
@@ -111,7 +111,7 @@ class PlayerForm extends React.Component {
               <h5>Walks</h5>
               <input
                 type="text"
-                placeholder="Walks"
+                placeholder="0"
                 value={newPlayer.walks}
                 onChange={this.walkChange}
               />
@@ -120,7 +120,7 @@ class PlayerForm extends React.Component {
               <h5>Strikeouts</h5>
               <input
                 type="text"
-                placeholder="Strike-outs"
+                placeholder="0"
                 value={newPlayer.strikeouts}
                 onChange={this.strikeoutChange}
               />
