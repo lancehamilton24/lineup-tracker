@@ -1,0 +1,43 @@
+@import '../../../styles/_variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+
+body {
+  background-color: $background-color !important;
+  // background-image: url('./homecover.jpeg');
+  background-repeat: no-repeat;
+  // background-position: center;
+  background-size: cover;
+  .auth {
+  display: flex;
+  justify-content: center;
+    .welcome {
+      font-size: 5vw;
+      color: white;
+      font-family: 'Coiny', cursive;
+    }
+    .authentication {
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 2%;
+      .centered {
+        position: absolute;
+        top: 60%;
+        left: 48%;
+        transform: translate(-50%, -50%);
+        font-family: 'Coiny', cursive;
+        h1 {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+  img {
+    margin: 5%;
+    height: 25vw;
+    width: 25vw;
+  }
+}
+

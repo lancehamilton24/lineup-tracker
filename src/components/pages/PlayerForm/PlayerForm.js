@@ -127,7 +127,6 @@ class PlayerForm extends React.Component {
               />
             </div>
           </div>
-          <button className="btn btn-danger">Save Player</button>
         </form>
       </div>
     );
