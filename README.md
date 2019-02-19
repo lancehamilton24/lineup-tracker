@@ -14,7 +14,3 @@ npm start
 ```
 
 ## Screenshots
-
-![homepage](./src/images/homepage.PNG)
-![lineups](./src/images/lineups.PNG)
-![lineups1](./src/images/lineups1.PNG)
