@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './PlayerForm.scss';
-import authRequests from '../../../helpers/data/authRequests';
+// import authRequests from '../../../helpers/data/authRequests';
 
 const defaultPlayer = {
   name: '',
@@ -48,7 +48,6 @@ class PlayerForm extends React.Component {
     e.preventDefault();
     const { onSubmit } = this.props;
     const myPlayer = { ...this.state.newPlayer };
-    myPlayer.uid = authRequests.getCurrentUid();
     myPlayer.lineupId = this.props.lineupId;
     onSubmit(myPlayer);
     this.setState({ newPlayer: defaultPlayer });
@@ -127,6 +126,7 @@ class PlayerForm extends React.Component {
               />
             </div>
           </div>
+          <button className="btn btn-danger">Save Player</button>
         </form>
       </div>
     );
