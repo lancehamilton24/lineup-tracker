@@ -6,11 +6,11 @@ import './PlayerForm.scss';
 const defaultPlayer = {
   name: '',
   position: '',
-  number: 0,
-  atBats: 0,
-  hits: 0,
-  walks: 0,
-  strikeouts: 0,
+  number: '',
+  atBats: '',
+  hits: '',
+  walks: '',
+  strikeouts: '',
 };
 
 class PlayerForm extends React.Component {
