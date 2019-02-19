@@ -62,7 +62,7 @@ class PlayerForm extends React.Component {
         <h2>Add New Player</h2>
           <div className="basicLineup">
             <div className="form-group" id="basicStats">
-              <label>Player Name:</label>
+              <h5>Player Name</h5>
               <input
                 type="text"
                 placeholder="Name"
@@ -71,7 +71,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="basicStats">
-              <label>Position:</label>
+              <h5>Position</h5>
               <input
                 type="text"
                 placeholder="Position"
@@ -80,7 +80,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="basicStats">
-              <label>Number:</label>
+              <h5>Number</h5>
               <input
                 type="text"
                 placeholder="Number"
@@ -91,7 +91,7 @@ class PlayerForm extends React.Component {
           </div>
           <div className="battingLineup">
             <div className="form-group" id="battingStats">
-              <label>At Bats:</label>
+              <h5>At Bats</h5>
               <input
                 type="text"
                 placeholder="At Bats"
@@ -100,7 +100,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <label>Hits:</label>
+              <h5>Hits</h5>
               <input
                 type="text"
                 placeholder="Hits"
@@ -109,7 +109,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <label>Walks:</label>
+              <h5>Walks</h5>
               <input
                 type="text"
                 placeholder="Walks"
@@ -118,7 +118,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <label>Strikeouts:</label>
+              <h5>Strikeouts</h5>
               <input
                 type="text"
                 placeholder="Strike-outs"

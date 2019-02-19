@@ -1,8 +1,18 @@
-// @import '../../../styles/_variables.scss';
-// .newPlayerForm {
-//   background-color: $background-modal !important;
-//   // background-image: url('./homecover.jpeg');
-//   background-repeat: no-repeat;
-//   // background-position: center;
-//   background-size: cover;
-// }
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+
+.newPlayerForm {
+  font-family: 'Coiny', cursive;
+  color: white;
+  .basicLineup {
+  display: flex;
+  justify-content: center;
+  }
+  #basicStats {
+    margin: 1%;
+  }
+  #battingStats {
+    input {
+      width: 90%;
+    }
+  }
+}
