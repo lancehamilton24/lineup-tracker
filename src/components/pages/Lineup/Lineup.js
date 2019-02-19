@@ -151,9 +151,7 @@ class Lineup extends React.Component {
             editId={editId}
           />
         </div>
-        <div>
           <div className="existingLineups">{lineupItems}</div>
-        </div>
         <div>
           <Modal className="modal" open={open} onClose={this.onCloseModal} center>
             <div className="container">
