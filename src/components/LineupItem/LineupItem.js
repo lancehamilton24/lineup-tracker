@@ -7,17 +7,15 @@ import './LineupItem.scss';
 
 class LineupItem extends React.Component {
   static propTypes = {
-    player: lineupShape.playerShape,
     lineup: lineupShape.lineupShape,
     deleteSingleLineup: PropTypes.func,
-    onLineupSelection: PropTypes.func,
+    passLineupToEdit: PropTypes.func,
   }
 
   lineupClick = (e) => {
     e.stopPropagation();
-    const { loadSelectedLineup, lineup, onOpenModal } = this.props;
-    loadSelectedLineup(lineup.id);
-    onOpenModal();
+    const { onSelect, lineup } = this.props;
+    onSelect(lineup.id);
   }
 
   editLineup = (e) => {
@@ -51,8 +49,8 @@ class LineupItem extends React.Component {
 
     return (
       <div className="lineupCards card">
-      <div className="text-center card-header">
-        <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
+      <div className="text-center card-header" onClick={this.lineupClick}>
+        <span className="col-3">{lineup.name}</span>
       </div>
       <div class="card-body">
   </div>

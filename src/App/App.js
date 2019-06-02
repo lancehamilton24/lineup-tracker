@@ -5,21 +5,22 @@ import 'firebase/auth';
 import connection from '../helpers/data/connections';
 
 import Auth from '../components/pages/Auth/Auth';
-// import Home from '../components/pages/Home/Home';
-// import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
 import Lineup from '../components/pages/Lineup/Lineup';
+import LineupForm from '../components/pages/LineupForm/LineupForm';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 // import playerRequests from '../helpers/data/playerRequests';
-import './App.scss';
-import authRequests from '../helpers/data/authRequests';
 import lineupRequests from '../helpers/data/lineupRequests';
+
+import authRequests from '../helpers/data/authRequests';
+
+import './App.scss';
+
 
 class App extends Component {
   state = {
     authed: false,
     pendingUser: true,
     lineups: [],
-    players: [],
     isEditing: false,
     editId: '-1',
     selectedLineupId: -1,
@@ -140,6 +141,7 @@ class App extends Component {
             passLineupToEdit={this.passLineupToEdit}
             onLineupSelection={this.lineupSelectEvent}
           />
+          <LineupForm onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
         </div>
       </div>
     );

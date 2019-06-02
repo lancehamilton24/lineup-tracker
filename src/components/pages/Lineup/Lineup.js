@@ -1,164 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from 'react-responsive-modal';
-import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
-import PlayerItem from '../../PlayerItem/PlayerItem';
 import './Lineup.scss';
-import lineupRequests from '../../../helpers/data/lineupRequests';
-import playerRequests from '../../../helpers/data/playerRequests';
-import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
-import LineupForm from '../LineupForm/LineupForm';
-import PlayerForm from '../PlayerForm/PlayerForm';
-
 
 class Lineup extends React.Component {
-  state = {
-    lineupId: ''
-    open: false,
-    
-  }
-
   static propTypes = {
-    lineup: lineupShape.lineupShape,
+    lineups: PropTypes.arrayOf(lineupShape.lineupShape),
+    deleteSingleLineup: PropTypes.func,
+    passLineupToEdit: PropTypes.func,
     onLineupSelection: PropTypes.func,
   }
-
-  onOpenModal = () => {
-    this.setState({ open: true });
-  };
-
-  onCloseModal = () => {
-    this.setState({ open: false });
-  };
-
-  getLineups = () => {
-    const uid = authRequests.getCurrentUid();
-    lineupRequests.getAllLineups(uid)
-      .then((lineups) => {
-        this.setState({ lineups });
-      });
-  };
-
-  loadSelectedLineup = (lineupId) => {
-    this.setState({ lineupId });
-    playerRequests.getPlayersByLineupId(lineupId)
-      .then((players) => {
-        this.setState({ players });
-      });
-  }
-
-  componentDidMount() {
-    this.getLineups();
-  }
-
-  deleteOne = (lineupId) => {
-    lineupRequests.deleteLineup(lineupId)
-      .then(() => {
-        const uid = authRequests.getCurrentUid();
-        lineupRequests.getAllLineups(uid)
-          .then((lineups) => {
-            this.setState({ lineups });
-            this.setState({ players: [] });
-          });
-      })
-      .catch(err => console.error('error with delete single', err));
-  }
-
-  formSubmitPlayer = (newPlayer) => {
-    playerRequests.postPlayerRequest(newPlayer)
-      .then((lineupId) => {
-        playerRequests.getPlayersByLineupId(lineupId)
-          .then((players) => {
-            this.setState({ newPlayer: players });
-          });
-      })
-      .catch(err => console.error('error with listings post', err));
-  }
-
-  
 
   render() {
     const {
       lineups,
       onLineupSelection,
-      isEditing,
-      editId,
-      open,
-      players,
-    } = this.state;
+      deleteSingleLineup,
+      passLineupToEdit,
+    } = this.props;
 
     const lineupItems = lineups.map(lineup => (
       <LineupItem
         lineup={lineup}
-        deleteSingleLineup={this.deleteOne}
+        deleteSingleLineup={deleteSingleLineup}
         key={lineup.id}
-        passLineupToEdit={this.passLineupToEdit}
-        loadSelectedLineup={this.loadSelectedLineup}
-        onOpenModal={this.onOpenModal}
+        passLineupToEdit={passLineupToEdit}
+        onSelect={onLineupSelection}
       />
     ));
-    const playerItems = players.map(player => (
-      <PlayerItem
-        player={player}
-        key={player.id}
-      />
-    ));
-
     return (
       <div className='lineups'>
-        <div className='lineupForm'>
-          <LineupForm
-            onSubmit={this.formSubmitLineup}
-            isEditing={isEditing}
-            editId={editId}
-          />
-        </div>
-          <div className="existingLineups">{lineupItems}</div>
-        <div>
-          <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <div className="container">
-              <div className="row">
-                <div className="col">
-                  <h3>Number</h3>
-                </div>
-                <div className="col">
-                  <h3>Name</h3>
-                </div>
-                <div className="col">
-                  <h3>Position</h3>
-                </div>
-                <div className="col">
-                  <h3>At-Bats</h3>
-                </div>
-                <div className="col">
-                  <h3>Hits</h3>
-                </div>
-                <div className="col">
-                  <h3>Walks</h3>
-                </div>
-                <div className="col">
-                  <h3>Strikeouts</h3>
-                </div>
-              </div>
-              <hr></hr>
-              <h5>{playerItems}</h5>
-            </div>
-            <ModalFooter>
-              <div className="playerForm">
-            <PlayerForm
-              onSubmit={this.formSubmitPlayer}
-              onSelect={onLineupSelection}
-              lineupId={this.state.lineupId}
-              loadSelectedLineup={this.loadSelectedLineup}
-            />
-            </div>
-            </ModalFooter>
-          </Modal>
-        </div>
-        <div>
-        </div>
+        <h3>Lineups</h3>
+        <ul>{lineupItems}</ul>
       </div>
     );
   }
