@@ -15,12 +15,9 @@ import PlayerForm from '../PlayerForm/PlayerForm';
 
 class Lineup extends React.Component {
   state = {
-    lineups: [],
-    players: [],
-    lineupId: '',
-    isEditing: false,
+    lineupId: ''
     open: false,
-    editId: '-1',
+    
   }
 
   static propTypes = {
@@ -35,12 +32,6 @@ class Lineup extends React.Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
-
-  lineupSelectEvent = (id) => {
-    this.setState({
-      selectedLineupId: id,
-    });
-  }
 
   getLineups = () => {
     const uid = authRequests.getCurrentUid();
@@ -75,33 +66,6 @@ class Lineup extends React.Component {
       .catch(err => console.error('error with delete single', err));
   }
 
-  formSubmitLineup = (newLineupName) => {
-    const { isEditing, editId } = this.state;
-    if (isEditing) {
-      lineupRequests.updateLineup(editId, newLineupName)
-        .then(() => {
-          const uid = authRequests.getCurrentUid();
-          lineupRequests.getAllLineups(uid)
-            .then((lineups) => {
-              this.setState({ lineups, isEditing: false, editId: '-1' });
-            });
-        })
-        .catch(err => console.error('error with listings post', err));
-    } else {
-      lineupRequests.postRequest(newLineupName)
-        .then(() => {
-          const uid = authRequests.getCurrentUid();
-          lineupRequests.getAllLineups(uid)
-            .then((lineups) => {
-              this.setState({ lineups });
-              this.setState({ players: [] });
-              this.setState({ newLineupName: '' });
-            });
-        })
-        .catch(err => console.error('error with listings post', err));
-    }
-  }
-
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
       .then((lineupId) => {
@@ -113,7 +77,7 @@ class Lineup extends React.Component {
       .catch(err => console.error('error with listings post', err));
   }
 
-  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
+  
 
   render() {
     const {
