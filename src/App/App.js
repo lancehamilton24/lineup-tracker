@@ -1,45 +1,40 @@
-import React, { Component } from 'react';
+import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
+import {
+  BrowserRouter, Route, Redirect, Switch,
+} from 'react-router-dom';
 import connection from '../helpers/data/connections';
-
 import Auth from '../components/pages/Auth/Auth';
-import Lineup from '../components/pages/Lineup/Lineup';
-import LineupForm from '../components/pages/LineupForm/LineupForm';
+// import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-// import playerRequests from '../helpers/data/playerRequests';
-import lineupRequests from '../helpers/data/lineupRequests';
-
+import Lineups from '../components/pages/Lineups/Lineups';
+import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
-import './App.scss';
 
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === false
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
 
-class App extends Component {
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === true
+    ? (<Component {...props} />)
+    : (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />));
+  return <Route {...rest} render={props => routeChecker(props)} />;
+};
+
+class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
-    lineups: [],
-    isEditing: false,
-    editId: '-1',
-    selectedLineupId: -1,
-  }
-
-  lineupSelectEvent = (id) => {
-    this.setState({
-      selectedLineupId: id,
-    });
   }
 
   componentDidMount() {
     connection();
-    lineupRequests.getAllLineups()
-      .then((lineups) => {
-        this.setState({ lineups });
-      })
-      .catch(err => console.error('error with getting lineup', err));
-
     this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({
@@ -63,86 +58,41 @@ class App extends Component {
     this.setState({ authed: true });
   }
 
-  deleteOne = (lineupId) => {
-    lineupRequests.deleteLineup(lineupId)
-      .then(() => {
-        const uid = authRequests.getCurrentUid();
-        lineupRequests.getAllLineups(uid)
-          .then((lineups) => {
-            this.setState({ lineups });
-            // this.setState({ players: [] });
-          });
-      })
-      .catch(err => console.error('error with delete single', err));
-  }
-
-  formSubmitLineup = (newLineupName) => {
-    const { isEditing, editId } = this.state;
-    if (isEditing) {
-      lineupRequests.updateLineup(editId, newLineupName)
-        .then(() => {
-          const uid = authRequests.getCurrentUid();
-          lineupRequests.getAllLineups(uid)
-            .then((lineups) => {
-              this.setState({ lineups, isEditing: false, editId: '-1' });
-            });
-        })
-        .catch(err => console.error('error with lineup post', err));
-    } else {
-      lineupRequests.postRequest(newLineupName)
-        .then(() => {
-          const uid = authRequests.getCurrentUid();
-          lineupRequests.getAllLineups(uid)
-            .then((lineups) => {
-              this.setState({ lineups });
-              // this.setState({ players: [] });
-              // this.setState({ newLineupName: '' });
-            });
-        })
-        .catch(err => console.error('error with listings post', err));
-    }
-  }
-
-  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
-
   render() {
     const {
       authed,
-      lineups,
-      isEditing,
-      editId,
-      selectedLineupId,
     } = this.state;
-
-    const selectedLineup = lineups.find(lineup => lineup.id === selectedLineupId) || { nope: 'nope' };
 
     const logoutClickEvent = () => {
       authRequests.logoutUser();
       this.setState({ authed: false });
     };
 
+
     if (!authed) {
       return (
         <div className="App">
           <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
-          {/* <div className="row"> */}
           <Auth isAuthenticated={this.isAuthenticated} />
-          {/* </div> */}
         </div>
       );
     }
     return (
       <div className="App">
-        <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
-        <div className='row'>
-          <Lineup
-            lineups={lineups}
-            SingleLineup={this.deleteOne}
-            passLineupToEdit={this.passLineupToEdit}
-            onLineupSelection={this.lineupSelectEvent}
-          />
-          <LineupForm onSubmit={this.formSubmitLineup} isEditing={isEditing} editId={editId}/>
-        </div>
+        <BrowserRouter>
+          <React.Fragment>
+            <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}></MyNavbar>
+            <div className='appContain container'>
+              <div className='row'>
+                <Switch>
+                  <PrivateRoute path='/lineups' exact component={Lineups} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Lineups} authed={this.state.authed} />
+                  <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
+                </Switch>
+              </div>
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }

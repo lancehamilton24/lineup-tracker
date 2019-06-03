@@ -1,10 +1,14 @@
-// @import './_variables.scss';
+@import './_variables.scss';
 
 
-// Auth {
-//   background-color: $background-color !important;
-// }
+Auth {
+  margin: 0;
+  padding: 0;
+  background-color: $background-color !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-// .App {
-//   width: 100%;
-// }
+.App {
+  width: 100%;
+}
