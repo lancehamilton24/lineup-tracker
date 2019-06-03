@@ -2,6 +2,7 @@ import React from 'react';
 import './Lineups.scss';
 import LineupItem from '../LineupItem/LineupItem';
 // import authRequests from '../../../helpers/data/authRequests';
+import LineupForm from '../LineupForm/LineupForm';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 
@@ -65,7 +66,9 @@ class Lineups extends React.Component {
 
     return (
       <div className='lineups'>
-        {/* <LineupForm onSubmit={this.formSubmitLineups} /> */}
+        <div className="row">
+        <LineupForm onSubmit={this.formSubmitLineups} />
+        </div>
         <div className="existingLineups">{lineupItems}</div>
       </div>
     );
