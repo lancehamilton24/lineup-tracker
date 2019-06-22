@@ -1,8 +1,10 @@
 // @import '../../../styles/_variables.scss';
 
 .lineups {
-  background-color:white !important;
+  // background-color:white !important;
   width: 100%;
+  display: flex;
+  flex-direction: column;
   // margin: 2%;
   // border-radius: 25px;
 }
@@ -12,10 +14,9 @@
 // }
 
 .existingLineups {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // flex-wrap: wrap;
   width: 100%;
 }
 
