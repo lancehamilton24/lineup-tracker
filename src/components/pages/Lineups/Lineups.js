@@ -3,7 +3,7 @@ import React from 'react';
 import './Lineups.scss';
 import LineupItem from '../../LineupItem/LineupItem';
 // import authRequests from '../../../helpers/data/authRequests';
-import LineupForm from '../LineupForm/LineupForm';
+import LineupForm from '../../LineupForm/LineupForm';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 
