@@ -6,11 +6,11 @@ import './PlayerForm.scss';
 const defaultPlayer = {
   name: '',
   position: '',
-  number: '',
-  atBats: '',
-  hits: '',
-  walks: '',
-  strikeouts: '',
+  number: 0,
+  atBats: 0,
+  hits: 0,
+  walks: 0,
+  strikeouts: 0,
 };
 
 class PlayerForm extends React.Component {
@@ -82,7 +82,7 @@ class PlayerForm extends React.Component {
               <h5>Number</h5>
               <input
                 type="text"
-                placeholder="0"
+                placeholder="Number"
                 value={newPlayer.number}
                 onChange={this.numberChange}
               />
@@ -93,7 +93,7 @@ class PlayerForm extends React.Component {
               <h5>At Bats</h5>
               <input
                 type="text"
-                placeholder="0"
+                placeholder="At Bats"
                 value={newPlayer.atBats}
                 onChange={this.atBatChange}
               />
@@ -102,7 +102,7 @@ class PlayerForm extends React.Component {
               <h5>Hits</h5>
               <input
                 type="text"
-                placeholder="0"
+                placeholder="Hits"
                 value={newPlayer.hits}
                 onChange={this.hitChange}
               />
@@ -111,7 +111,7 @@ class PlayerForm extends React.Component {
               <h5>Walks</h5>
               <input
                 type="text"
-                placeholder="0"
+                placeholder="Walks"
                 value={newPlayer.walks}
                 onChange={this.walkChange}
               />
@@ -120,7 +120,7 @@ class PlayerForm extends React.Component {
               <h5>Strikeouts</h5>
               <input
                 type="text"
-                placeholder="0"
+                placeholder="Strike-outs"
                 value={newPlayer.strikeouts}
                 onChange={this.strikeoutChange}
               />
