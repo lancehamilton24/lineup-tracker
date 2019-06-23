@@ -1,20 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import {
   BrowserRouter, Route, Redirect, Switch,
 } from 'react-router-dom';
-
 import connection from '../helpers/data/connections';
-
 import Auth from '../components/pages/Auth/Auth';
 // import Home from '../components/pages/Home/Home';
-// import CreateLineup from '../components/pages/CreateLineup/CreateLineup';
-import Lineup from '../components/pages/Lineup/Lineup';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-// import playerRequests from '../helpers/data/playerRequests';
+import Lineups from '../components/pages/Lineups/Lineups';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
+
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
@@ -30,7 +27,7 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
-class App extends Component {
+class App extends React.Component {
   state = {
     authed: false,
     pendingUser: true,
@@ -44,7 +41,6 @@ class App extends Component {
           authed: true,
           pendingUser: false,
         });
-
       } else {
         this.setState({
           authed: false,
@@ -72,28 +68,26 @@ class App extends Component {
       this.setState({ authed: false });
     };
 
+
     if (!authed) {
       return (
         <div className="App">
-        <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
-          {/* <div className="row"> */}
-            <Auth isAuthenticated={this.isAuthenticated}/>
-          {/* </div> */}
+          <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
+          <Auth isAuthenticated={this.isAuthenticated} />
         </div>
       );
     }
     return (
       <div className="App">
-          <BrowserRouter>
+        <BrowserRouter>
           <React.Fragment>
-            <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent} />
+            <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}></MyNavbar>
             <div className='appContain container'>
-            <div className='row'>
                 <Switch>
-                  <PrivateRoute path='/' exact component={Lineup} authed={this.state.authed} />
+                  <PrivateRoute path='/lineups' exact component={Lineups} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Lineups} authed={this.state.authed} />
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
-              </div>
             </div>
           </React.Fragment>
         </BrowserRouter>
