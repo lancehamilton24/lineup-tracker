@@ -4,13 +4,13 @@ import Modal from 'react-responsive-modal';
 import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
 import PlayerItem from '../../PlayerItem/PlayerItem';
+import LineupPlayers from '../LineupView/LineupView';
 import './Lineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupForm from '../LineupForm/LineupForm';
-import LineupView from '../LineupView/LineupView';
 import PlayerForm from '../PlayerForm/PlayerForm';
 
 class Lineup extends React.Component {
@@ -156,7 +156,7 @@ class Lineup extends React.Component {
           <div className="existingLineups">{lineupItems}</div>
         <div>
           <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <LineupView players={players} lineupId={this.state.lineupId}/>
+            <LineupPlayers players={players} lineupId={this.state.lineupId}/>
             <div className="playerForm">
             <PlayerForm
               onSubmit={this.formSubmitPlayer}
