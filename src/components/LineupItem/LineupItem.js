@@ -1,20 +1,23 @@
 import React from 'react';
-import { Button } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 import lineupShape from '../../helpers/propz/lineupShape';
+
 import './LineupItem.scss';
 
 class LineupItem extends React.Component {
   static propTypes = {
+    player: lineupShape.playerShape,
     lineup: lineupShape.lineupShape,
     deleteSingleLineup: PropTypes.func,
-    passLineupToEdit: PropTypes.func,
+    onLineupSelection: PropTypes.func,
   }
 
-  deleteLineup = (e) => {
-    e.preventDefault();
-    const { deleteSingleLineup, lineup } = this.props;
-    deleteSingleLineup(lineup.id);
+  lineupClick = (e) => {
+    e.stopPropagation();
+    const { loadSelectedLineup, lineup, onOpenModal } = this.props;
+    loadSelectedLineup(lineup.id);
+    onOpenModal();
   }
 
   editLineup = (e) => {
@@ -23,16 +26,39 @@ class LineupItem extends React.Component {
     passLineupToEdit(lineup.id);
   }
 
+  deleteLineup = (e) => {
+    e.preventDefault();
+    const { deleteSingleLineup, lineup } = this.props;
+    deleteSingleLineup(lineup.id);
+  }
+
   render() {
     const { lineup } = this.props;
+    const makeButtons = () => (
+          <div>
+            <span className="editLineup col">
+              <Button outline color="info" onClick={this.editLineup}>
+                Edit
+              </Button>
+            </span>
+            <span className="deleteLineup col">
+              <Button outline color="danger" onClick={this.deleteLineup}>
+              Delete
+              </Button>
+            </span>
+          </div>
+    );
 
     return (
       <div className="lineupCards card">
-        <div className="card-body">
-        <span className="col-3">{lineup.name}</span>
-        <Button outline color="info" onClick={this.editLineup}>Edit</Button>
-        <Button outline color="info" onClick={this.deleteLineup}>Delete</Button>
-        </div>
+      <div className="text-center card-header">
+        <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
+      </div>
+      <div class="card-body">
+  </div>
+      <div className="card-footer text-muted">
+      {makeButtons()}
+      </div>
       </div>
     );
   }

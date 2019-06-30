@@ -8,7 +8,7 @@ import connection from '../helpers/data/connections';
 import Auth from '../components/pages/Auth/Auth';
 // import Home from '../components/pages/Home/Home';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
-import Lineups from '../components/pages/Lineups/Lineups';
+import Lineup from '../components/pages/Lineup/Lineup';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
 
@@ -84,8 +84,8 @@ class App extends React.Component {
             <MyNavbar isAuthed={authed} logoutClickEvent={logoutClickEvent}></MyNavbar>
             <div className='appContain container'>
                 <Switch>
-                  <PrivateRoute path='/lineups' exact component={Lineups} authed={this.state.authed} />
-                  <PrivateRoute path='/' exact component={Lineups} authed={this.state.authed} />
+                  <PrivateRoute path='/lineups' exact component={Lineup} authed={this.state.authed} />
+                  <PrivateRoute path='/' exact component={Lineup} authed={this.state.authed} />
                   <PublicRoute path='/auth' component={Auth} authed={this.state.authed} />
                 </Switch>
             </div>
