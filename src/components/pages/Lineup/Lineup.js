@@ -148,17 +148,16 @@ class Lineup extends React.Component {
           <div className="existingLineups">{lineupItems}</div>
         <div>
           <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <LineupView players={players} onSubmit={this.formSubmitPlayer}/>
-            <ModalFooter>
-              <div className="playerForm">
+            <LineupView players={players} lineupId={this.state.lineupId}/>
+            <div className="playerForm">
             <PlayerForm
               onSubmit={this.formSubmitPlayer}
+              players={players}
               onSelect={onLineupSelection}
               lineupId={this.state.lineupId}
               loadSelectedLineup={this.loadSelectedLineup}
             />
             </div>
-            </ModalFooter>
           </Modal>
         </div>
         <div>

@@ -4,12 +4,8 @@ import playerRequests from '../../../helpers/data/playerRequests';
 
 export class LineupView extends Component {
   state = {
-    players: this.props.players,
+    // players: this.props.players,
   }
-
-  // componentDidMount() {
-      
-  // }
 
   render() {
     const {
