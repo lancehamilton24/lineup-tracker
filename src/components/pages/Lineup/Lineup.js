@@ -103,7 +103,15 @@ class Lineup extends React.Component {
   }
 
   formSubmitPlayer = (newPlayer) => {
+    const { lineupId } = this.state;
     playerRequests.postPlayerRequest(newPlayer)
+      .then(() => {
+        this.setState({ lineupId });
+        playerRequests.getPlayersByLineupId(lineupId)
+          .then((players) => {
+            this.setState({ players });
+          });
+      })
       .catch(err => console.error('error with listings post', err));
   }
 
