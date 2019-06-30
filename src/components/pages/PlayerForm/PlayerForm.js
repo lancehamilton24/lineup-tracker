@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './PlayerForm.scss';
+// import './PlayerForm.scss';
 // import authRequests from '../../../helpers/data/authRequests';
 
 const defaultPlayer = {
