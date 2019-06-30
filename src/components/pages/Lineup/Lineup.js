@@ -10,8 +10,8 @@ import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupForm from '../LineupForm/LineupForm';
+import LineupView from '../LineupView/LineupView';
 import PlayerForm from '../PlayerForm/PlayerForm';
-
 
 class Lineup extends React.Component {
   state = {
@@ -104,12 +104,6 @@ class Lineup extends React.Component {
 
   formSubmitPlayer = (newPlayer) => {
     playerRequests.postPlayerRequest(newPlayer)
-      .then((lineupId) => {
-        playerRequests.getPlayersByLineupId(lineupId)
-          .then((players) => {
-            this.setState({ newPlayer: players });
-          });
-      })
       .catch(err => console.error('error with listings post', err));
   }
 
@@ -154,33 +148,7 @@ class Lineup extends React.Component {
           <div className="existingLineups">{lineupItems}</div>
         <div>
           <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <div className="container">
-              <div className="row">
-                <div className="col">
-                  <h3>Number</h3>
-                </div>
-                <div className="col">
-                  <h3>Name</h3>
-                </div>
-                <div className="col">
-                  <h3>Position</h3>
-                </div>
-                <div className="col">
-                  <h3>At-Bats</h3>
-                </div>
-                <div className="col">
-                  <h3>Hits</h3>
-                </div>
-                <div className="col">
-                  <h3>Walks</h3>
-                </div>
-                <div className="col">
-                  <h3>Strikeouts</h3>
-                </div>
-              </div>
-              <hr></hr>
-              <h5>{playerItems}</h5>
-            </div>
+            <LineupView players={players} onSubmit={this.formSubmitPlayer}/>
             <ModalFooter>
               <div className="playerForm">
             <PlayerForm
