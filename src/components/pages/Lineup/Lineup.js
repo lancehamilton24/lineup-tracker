@@ -138,6 +138,14 @@ class Lineup extends React.Component {
       />
     ));
 
+    const noLineupData = () => {
+      if (lineups.length === 0) {
+        return (
+        <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
+        );
+      }
+    };
+
     return (
       <div className='lineups'>
         <div className='lineupForm'>
@@ -148,6 +156,7 @@ class Lineup extends React.Component {
           />
         </div>
           <div className="existingLineups">{lineupItems}</div>
+          {noLineupData()}
         <div>
           <Modal className="modal" open={open} onClose={this.onCloseModal} center>
             <LineupPlayers players={players} lineupId={this.state.lineupId}/>
