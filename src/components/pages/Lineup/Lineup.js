@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
 import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
-import PlayerItem from '../../PlayerItem/PlayerItem';
+// import PlayerItem from '../../PlayerItem/PlayerItem';
 import LineupPlayers from '../LineupView/LineupView';
 import './Lineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
@@ -137,12 +137,12 @@ class Lineup extends React.Component {
         onOpenModal={this.onOpenModal}
       />
     ));
-    const playerItems = players.map(player => (
-      <PlayerItem
-        player={player}
-        key={player.id}
-      />
-    ));
+    // const playerItems = players.map(player => (
+    //   <PlayerItem
+    //     player={player}
+    //     key={player.id}
+    //   />
+    // ));
 
     return (
       <div className='lineups'>
