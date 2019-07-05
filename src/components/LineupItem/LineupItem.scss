@@ -1,12 +1,14 @@
 @import '../../styles/_variables';
 
-.card {
+.lineupCards {
   margin: 1%;
   background-image: $background-card !important;
   background-repeat: no-repeat;
-  background-position: center;
   background-position: left;
-  width: 98%;
   font-size: 2vw;
   font-family: 'Coiny', cursive;
+  .lineupEditDelete {
+    display: flex;
+    justify-content: right;
+  }
 }

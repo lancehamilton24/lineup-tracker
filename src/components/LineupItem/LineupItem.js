@@ -55,7 +55,7 @@ class LineupItem extends React.Component {
         <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
       </div>
       <div class="card-body"></div>
-      <div className="card-footer text-muted">
+      <div className="card-footer lineupEditDelete">
       {makeButtons()}
       </div>
       </div>

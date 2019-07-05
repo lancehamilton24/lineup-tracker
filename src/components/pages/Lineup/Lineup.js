@@ -137,12 +137,6 @@ class Lineup extends React.Component {
         onOpenModal={this.onOpenModal}
       />
     ));
-    // const playerItems = players.map(player => (
-    //   <PlayerItem
-    //     player={player}
-    //     key={player.id}
-    //   />
-    // ));
 
     return (
       <div className='lineups'>
