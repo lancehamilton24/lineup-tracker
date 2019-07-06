@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
 import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
-import PlayerItem from '../../PlayerItem/PlayerItem';
+// import PlayerItem from '../../PlayerItem/PlayerItem';
+import LineupPlayers from '../LineupView/LineupView';
 import './Lineup.scss';
 import lineupRequests from '../../../helpers/data/lineupRequests';
 import playerRequests from '../../../helpers/data/playerRequests';
 import authRequests from '../../../helpers/data/authRequests';
 import lineupShape from '../../../helpers/propz/lineupShape';
 import LineupForm from '../LineupForm/LineupForm';
-import LineupView from '../LineupView/LineupView';
 import PlayerForm from '../PlayerForm/PlayerForm';
 
 class Lineup extends React.Component {
@@ -21,11 +21,18 @@ class Lineup extends React.Component {
     isEditing: false,
     open: false,
     editId: '-1',
+    isHidden: true,
   }
 
   static propTypes = {
     lineup: lineupShape.lineupShape,
     onLineupSelection: PropTypes.func,
+  }
+
+  toggleHidden = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
   }
 
   onOpenModal = () => {
@@ -137,15 +144,21 @@ class Lineup extends React.Component {
         onOpenModal={this.onOpenModal}
       />
     ));
-    const playerItems = players.map(player => (
-      <PlayerItem
-        player={player}
-        key={player.id}
-      />
-    ));
+
+    const noLineupData = () => {
+      if (lineups.length === 0) {
+        return (
+          <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
+        );
+      }
+      return (
+        <p>Select lineup name to view, add, and edit players</p>
+      );
+    };
 
     return (
-      <div className='lineups'>
+      <div className="container">
+        <div className='lineups'>
         <div className='lineupForm'>
           <LineupForm
             onSubmit={this.formSubmitLineup}
@@ -153,22 +166,24 @@ class Lineup extends React.Component {
             editId={editId}
           />
         </div>
+          {noLineupData()}
           <div className="existingLineups">{lineupItems}</div>
-        <div>
-          <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <LineupView players={players} lineupId={this.state.lineupId}/>
-            <div className="playerForm">
-            <PlayerForm
-              onSubmit={this.formSubmitPlayer}
-              players={players}
-              onSelect={onLineupSelection}
-              lineupId={this.state.lineupId}
-              loadSelectedLineup={this.loadSelectedLineup}
-            />
-            </div>
-          </Modal>
-        </div>
-        <div>
+          <div>
+            <Modal className="modal" open={open} onClose={this.onCloseModal} center>
+              <LineupPlayers players={players} lineupId={this.state.lineupId} />
+              <div className="playerForm">
+                <PlayerForm
+                  onSubmit={this.formSubmitPlayer}
+                  players={players}
+                  onSelect={onLineupSelection}
+                  lineupId={this.state.lineupId}
+                  loadSelectedLineup={this.loadSelectedLineup}
+                />
+              </div>
+            </Modal>
+          </div>
+          <div>
+          </div>
         </div>
       </div>
     );

@@ -1,36 +1,29 @@
-// @import '../../../styles/_variables.scss';
+@import '../../../styles/_variables.scss';
 
 .lineups {
   // background-color:white !important;
   width: 100%;
   display: flex;
   flex-direction: column;
-  // margin: 2%;
-  // border-radius: 25px;
+  font-family: 'Coiny', cursive;
+  text-align: center;
+  color: white;
 }
-
-// .container {
-//   background-color: red !important;
-// }
 
 .existingLineups {
-  // display: flex;
-  // flex-direction: column;
-  // flex-wrap: wrap;
   width: 100%;
+  font-family: 'Coiny', cursive;
+  padding-right: 10%;
+  padding-left: 10%;
 }
+
 
 .lineupForm {
   display: flex;
   justify-content: center;
   border: 0.5rem outset rgb(7, 82, 7);
-  border-radius: 25px;
   background-color: green !important;
-  // padding: 2%;
-  // color: white;
-  // background-color: rgb(7, 82, 7);
   margin: 2% 10%;
-  border-radius: 25px;
 }
 
 .playerForm {
