@@ -21,11 +21,18 @@ class Lineup extends React.Component {
     isEditing: false,
     open: false,
     editId: '-1',
+    isHidden: true,
   }
 
   static propTypes = {
     lineup: lineupShape.lineupShape,
     onLineupSelection: PropTypes.func,
+  }
+
+  toggleHidden = () => {
+    this.setState({
+      isHidden: !this.state.isHidden
+    });
   }
 
   onOpenModal = () => {
@@ -141,13 +148,17 @@ class Lineup extends React.Component {
     const noLineupData = () => {
       if (lineups.length === 0) {
         return (
-        <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
+          <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
         );
       }
+      return (
+        <p>Select lineup name to view, add, and edit players</p>
+      );
     };
 
     return (
-      <div className='lineups'>
+      <div className="container">
+        <div className='lineups'>
         <div className='lineupForm'>
           <LineupForm
             onSubmit={this.formSubmitLineup}
@@ -155,23 +166,24 @@ class Lineup extends React.Component {
             editId={editId}
           />
         </div>
-          <div className="existingLineups">{lineupItems}</div>
           {noLineupData()}
-        <div>
-          <Modal className="modal" open={open} onClose={this.onCloseModal} center>
-            <LineupPlayers players={players} lineupId={this.state.lineupId}/>
-            <div className="playerForm">
-            <PlayerForm
-              onSubmit={this.formSubmitPlayer}
-              players={players}
-              onSelect={onLineupSelection}
-              lineupId={this.state.lineupId}
-              loadSelectedLineup={this.loadSelectedLineup}
-            />
-            </div>
-          </Modal>
-        </div>
-        <div>
+          <div className="existingLineups">{lineupItems}</div>
+          <div>
+            <Modal className="modal" open={open} onClose={this.onCloseModal} center>
+              <LineupPlayers players={players} lineupId={this.state.lineupId} />
+              <div className="playerForm">
+                <PlayerForm
+                  onSubmit={this.formSubmitPlayer}
+                  players={players}
+                  onSelect={onLineupSelection}
+                  lineupId={this.state.lineupId}
+                  loadSelectedLineup={this.loadSelectedLineup}
+                />
+              </div>
+            </Modal>
+          </div>
+          <div>
+          </div>
         </div>
       </div>
     );

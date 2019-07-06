@@ -34,30 +34,41 @@ class LineupItem extends React.Component {
 
   render() {
     const { lineup } = this.props;
-    const makeButtons = () => (
-          <div>
-            <span className="editLineup col">
-              <Button outline color="info" onClick={this.editLineup}>
-                Edit
+
+    const lineupEditDeleteBtn = () => {
+      return (
+      <div>
+        <span className="editLineup col">
+          <Button outline color="info" onClick={this.editLineup}>
+            Edit
               </Button>
-            </span>
-            <span className="deleteLineup col">
-              <Button outline color="danger" onClick={this.deleteLineup}>
-              Delete
+        </span>
+        <span className="deleteLineup col">
+          <Button outline color="danger" onClick={this.deleteLineup}>
+            Delete
               </Button>
-            </span>
-          </div>
-    );
+        </span>
+      </div>
+      );
+    };
+
+    const lineupPage = () => {
+      if (lineup.name === 0) {
+        return (
+          <h1>No data</h1>
+        );
+      }
+      return (
+        <div className="lineupCards card">
+            <h2 onClick={this.lineupClick}>{lineup.name}</h2>
+            {lineupEditDeleteBtn()}
+        </div>
+      );
+    };
 
     return (
-      <div className="lineupCards card">
-      <div className="text-center card-header">
-        <span className="col-3" onClick={this.lineupClick}>{lineup.name}</span>
-      </div>
-      <div class="card-body"></div>
-      <div className="card-footer lineupEditDelete">
-      {makeButtons()}
-      </div>
+      <div>
+        {lineupPage()}
       </div>
     );
   }
