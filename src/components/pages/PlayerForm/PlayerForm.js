@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import './PlayerForm.scss';
+import './PlayerForm.scss';
 // import authRequests from '../../../helpers/data/authRequests';
 
 const defaultPlayer = {
@@ -57,7 +57,7 @@ class PlayerForm extends React.Component {
     const { newPlayer } = this.state;
     return (
       <div className="newPlayerForm">
-        <form className="pure-form" onSubmit={this.formPlayerSubmit}>
+        <form className="form" onSubmit={this.formPlayerSubmit}>
         <h2>Add New Player</h2>
           <div className="basicLineup">
             <div className="form-group" id="basicStats">
