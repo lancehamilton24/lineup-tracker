@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
-import { ModalFooter } from 'reactstrap';
+// import { ModalFooter } from 'reactstrap';
 import LineupItem from '../../LineupItem/LineupItem';
 // import PlayerItem from '../../PlayerItem/PlayerItem';
 import LineupPlayers from '../LineupView/LineupView';
@@ -20,6 +20,7 @@ class Lineup extends React.Component {
     lineupId: '',
     isEditing: false,
     open: false,
+    isActive: false,
     editId: '-1',
     isHidden: true,
   }
@@ -27,12 +28,6 @@ class Lineup extends React.Component {
   static propTypes = {
     lineup: lineupShape.lineupShape,
     onLineupSelection: PropTypes.func,
-  }
-
-  toggleHidden = () => {
-    this.setState({
-      isHidden: !this.state.isHidden
-    });
   }
 
   onOpenModal = () => {
@@ -132,6 +127,7 @@ class Lineup extends React.Component {
       editId,
       open,
       players,
+      isActive
     } = this.state;
 
     const lineupItems = lineups.map(lineup => (
