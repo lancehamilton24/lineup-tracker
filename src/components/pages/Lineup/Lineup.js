@@ -165,7 +165,7 @@ class Lineup extends React.Component {
     const hideAddPlayerBtn = () => {
       if (isHidden === true) {
         return (
-          <a onClick={this.toggleHidden.bind(this)} class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus}/></a>
+          <a onClick={this.toggleHidden.bind(this)} class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
         );
       }
       return (
@@ -176,20 +176,22 @@ class Lineup extends React.Component {
     return (
       <div className="container">
         <div className='lineups'>
-        <div className='lineupForm'>
-          <LineupForm
-            onSubmit={this.formSubmitLineup}
-            isEditing={isEditing}
-            editId={editId}
-          />
-        </div>
-          {noLineupData()}
+          <div className='lineupForm'>
+            <LineupForm
+              onSubmit={this.formSubmitLineup}
+              isEditing={isEditing}
+              editId={editId}
+            />
+          </div>
+          <div>
+            {noLineupData()}
+          </div>
           <div className="existingLineups">{lineupItems}</div>
           <div>
             <Modal className="modal" open={open} onClose={this.onCloseModal} center>
               <LineupPlayers players={players} lineupId={this.state.lineupId} />
               <div className="playerForm">
-              {!this.state.isHidden && <PlayerForm
+                {!this.state.isHidden && <PlayerForm
                   onSubmit={this.formSubmitPlayer}
                   players={players}
                   onSelect={onLineupSelection}
@@ -199,7 +201,7 @@ class Lineup extends React.Component {
                   isHidden={isHidden}
                 />}
               </div>
-             <div className="addPlayerBtn">{hideAddPlayerBtn()}</div>
+              <div className="addPlayerBtn">{hideAddPlayerBtn()}</div>
             </Modal>
           </div>
           <div>
