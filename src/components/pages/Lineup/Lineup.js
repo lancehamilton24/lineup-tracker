@@ -199,7 +199,7 @@ class Lineup extends React.Component {
                   isHidden={isHidden}
                 />}
               </div>
-             {hideAddPlayerBtn()}
+             <div className="addPlayerBtn">{hideAddPlayerBtn()}</div>
             </Modal>
           </div>
           <div>

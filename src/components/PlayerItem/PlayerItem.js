@@ -1,7 +1,7 @@
 import React from 'react';
 import lineupShape from '../../helpers/propz/lineupShape';
 
-// import './PlayerItem.scss';
+import './PlayerItem.scss';
 
 class PlayerItem extends React.Component {
   state = {

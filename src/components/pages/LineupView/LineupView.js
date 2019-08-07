@@ -52,7 +52,7 @@ export class LineupView extends Component {
       );
     }
     return (
-      <div><h6>You do not currently have any players in this lineup</h6></div>
+      <h5><b>You do not currently players in your lineup. Add players below.</b></h5>
     );
   }
 }
