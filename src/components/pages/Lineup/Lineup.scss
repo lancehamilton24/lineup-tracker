@@ -13,8 +13,8 @@
 .existingLineups {
   width: 100%;
   font-family: 'Coiny', cursive;
-  padding-right: 10%;
-  padding-left: 10%;
+  // padding-right: 10%;
+  // padding-left: 10%;
 }
 
 
@@ -23,7 +23,6 @@
   justify-content: center;
   border: 0.5rem outset rgb(7, 82, 7);
   background-color: green !important;
-  margin: 2% 10%;
 }
 
 .playerForm {
@@ -31,11 +30,14 @@
 }
 
 .styles_modal__gNwvD {
-  max-width: 90%;
+  max-width: 100%;
   text-align: center;
   background-image: url('../../../images/baseball1.png');
   background-repeat: no-repeat;
   background-position: center;
+  .addPlayerBtn {
+    text-align: left;
+  }
 }
 
 .basicLineup {

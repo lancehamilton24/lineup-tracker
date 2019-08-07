@@ -11,6 +11,7 @@ import MyNavbar from '../components/MyNavbar/MyNavbar';
 import Lineup from '../components/pages/Lineup/Lineup';
 import './App.scss';
 import authRequests from '../helpers/data/authRequests';
+import 'materialize-css/dist/css/materialize.min.css';
 
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {

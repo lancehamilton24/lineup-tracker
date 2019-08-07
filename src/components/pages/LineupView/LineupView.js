@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PlayerItem from '../../PlayerItem/PlayerItem';
 import playerRequests from '../../../helpers/data/playerRequests';
+import './LineupView.scss';
 
 export class LineupView extends Component {
   state = {
@@ -18,34 +19,40 @@ export class LineupView extends Component {
         key={player.id}
       />
     ));
-    return (
-      <div className="container">
-              <div className="row">
-                <div className="col">
-                  <h3>Number</h3>
-                </div>
-                <div className="col">
-                  <h3>Name</h3>
-                </div>
-                <div className="col">
-                  <h3>Position</h3>
-                </div>
-                <div className="col">
-                  <h3>At-Bats</h3>
-                </div>
-                <div className="col">
-                  <h3>Hits</h3>
-                </div>
-                <div className="col">
-                  <h3>Walks</h3>
-                </div>
-                <div className="col">
-                  <h3>Strikeouts</h3>
-                </div>
-              </div>
-              <hr></hr>
-              <h5>{playerItems}</h5>
+
+    if (players.length > 0) {
+      return (
+        <div>
+          <div className="row">
+            <div className="col s1">
+              <h6>Number</h6>
             </div>
+            <div className="col s1">
+              <h6>Name</h6>
+            </div>
+            <div className="col s1">
+              <h6>Position</h6>
+            </div>
+            <div className="col s1">
+              <h6>At-Bats</h6>
+            </div>
+            <div className="col s1">
+              <h6>Hits</h6>
+            </div>
+            <div className="col s1">
+              <h6>Walks</h6>
+            </div>
+            <div className="col s1">
+              <h6>Strikeouts</h6>
+            </div>
+          </div>
+          <hr></hr>
+          <h5>{playerItems}</h5>
+        </div>
+      );
+    }
+    return (
+      <h5><b>You do not currently players in your lineup. Add players below.</b></h5>
     );
   }
 }
