@@ -14,7 +14,7 @@ class PlayerItem extends React.Component {
 
   render() {
     const { player } = this.props;
-
+    
     return (
       <div className="playerFormat container">
         <div className="individualPlayer row">

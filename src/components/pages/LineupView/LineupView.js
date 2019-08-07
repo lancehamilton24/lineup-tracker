@@ -18,34 +18,40 @@ export class LineupView extends Component {
         key={player.id}
       />
     ));
-    return (
-      <div className="container">
-              <div className="row">
-                <div className="col">
-                  <h3>Number</h3>
-                </div>
-                <div className="col">
-                  <h3>Name</h3>
-                </div>
-                <div className="col">
-                  <h3>Position</h3>
-                </div>
-                <div className="col">
-                  <h3>At-Bats</h3>
-                </div>
-                <div className="col">
-                  <h3>Hits</h3>
-                </div>
-                <div className="col">
-                  <h3>Walks</h3>
-                </div>
-                <div className="col">
-                  <h3>Strikeouts</h3>
-                </div>
-              </div>
-              <hr></hr>
-              <h5>{playerItems}</h5>
+
+    if (players.length > 0) {
+      return (
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <h3>Number</h3>
             </div>
+            <div className="col">
+              <h3>Name</h3>
+            </div>
+            <div className="col">
+              <h3>Position</h3>
+            </div>
+            <div className="col">
+              <h3>At-Bats</h3>
+            </div>
+            <div className="col">
+              <h3>Hits</h3>
+            </div>
+            <div className="col">
+              <h3>Walks</h3>
+            </div>
+            <div className="col">
+              <h3>Strikeouts</h3>
+            </div>
+          </div>
+          <hr></hr>
+          <h5>{playerItems}</h5>
+        </div>
+      );
+    } 
+    return (
+      <div><h3>You do not currently have any players in this lineup</h3></div>
     );
   }
 }

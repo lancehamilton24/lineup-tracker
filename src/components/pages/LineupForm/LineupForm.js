@@ -55,7 +55,7 @@ class LineupForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
-        <h2>Edit Your Lineup Here</h2>
+          <h2>Edit Your Lineup Here</h2>
           <div className="input-group editLineupForm">
             <input
               type="text"
@@ -65,26 +65,26 @@ class LineupForm extends React.Component {
               onChange={this.lineupChange}
             />
             <div class="input-group-append">
-            <button type="button" class="btn btn-outline-warning">Submit</button>
+              <button type="button" class="btn btn-outline-warning">Submit</button>
             </div>
           </div>
         </form>;
       }
       return <form className="lineupAddition" onSubmit={this.formSubmit}>
-          <h2>Add New Lineup Here</h2> 
-          <div className="input-group newLineupForm">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Lineup Name"
-              value={newLineupName.lineup}
-              onChange={this.lineupChange}
-            />
-            <div class="input-group-append">
+        <h2>Add New Lineup Here</h2>
+        <div className="input-group newLineupForm">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Lineup Name"
+            value={newLineupName.lineup}
+            onChange={this.lineupChange}
+          />
+          <div class="input-group-append">
             <button type="button" class="btn btn-outline-warning">Submit</button>
-            </div>
           </div>
-        </form>;
+        </div>
+      </form>;
     };
     return (
       <div className="addEditLineup">
