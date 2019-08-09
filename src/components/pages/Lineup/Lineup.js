@@ -103,7 +103,7 @@ class Lineup extends React.Component {
           const uid = authRequests.getCurrentUid();
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
-              this.setState({ lineups, isEditing: false, editId: '-1' });
+              this.setState({ lineups, isEditing: false, editId: '-1', lineupFormIsHidden: true });
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -113,7 +113,7 @@ class Lineup extends React.Component {
           const uid = authRequests.getCurrentUid();
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
-              this.setState({ lineups });
+              this.setState({ lineups, lineupFormIsHidden: true });
               this.setState({ players: [] });
               this.setState({ newLineupName: '' });
             });
@@ -157,6 +157,7 @@ class Lineup extends React.Component {
         passLineupToEdit={this.passLineupToEdit}
         loadSelectedLineup={this.loadSelectedLineup}
         onOpenModal={this.onOpenModal}
+        lineupFormIsHidden={lineupFormIsHidden}
       />
     ));
 
@@ -174,7 +175,7 @@ class Lineup extends React.Component {
     const hideAddPlayerBtn = () => {
       if (isHidden === true) {
         return (
-          <a onClick={this.toggleHidden.bind(this)} class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
+          <a onClick={this.toggleHidden.bind(this)} title="Add sPlayers" class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
         );
       }
       return (
@@ -191,6 +192,7 @@ class Lineup extends React.Component {
                 onSubmit={this.formSubmitLineup}
                 isEditing={isEditing}
                 editId={editId}
+                lineupFormIsHidden={lineupFormIsHidden}
               />
             </div>
             <div>
@@ -222,8 +224,10 @@ class Lineup extends React.Component {
     }
     return (
       <div>
-         <a onClick={this.toggleHiddenLineupForm.bind(this)} class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
-        <div className='lineups container'>
+        <div>
+         <a onClick={this.toggleHiddenLineupForm.bind(this)} title="Add New Lineup" class="btn-floating btn-large waves-effect waves-light red toggleLineupForm"><FontAwesomeIcon icon={faPlus} /></a>
+         </div>
+        <div className='lineups'>
           <div className='lineupForm'>
             {!this.state.lineupFormIsHidden && <LineupForm
               onSubmit={this.formSubmitLineup}

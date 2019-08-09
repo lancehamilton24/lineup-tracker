@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import lineupShape from '../../helpers/propz/lineupShape';
+
 
 import './LineupItem.scss';
 
@@ -37,18 +40,14 @@ class LineupItem extends React.Component {
 
     const lineupEditDeleteBtn = () => {
       return (
-      <div>
-        <span className="editLineup col">
-          <Button outline color="info" onClick={this.editLineup}>
-            Edit
-              </Button>
-        </span>
-        <span className="deleteLineup col">
-          <Button outline color="danger" onClick={this.deleteLineup}>
-            Delete
-              </Button>
-        </span>
-      </div>
+        <div>
+          <span className="editLineup col">
+              <Button onClick={this.editLineup}><FontAwesomeIcon icon={faPencilAlt}/></Button>
+          </span>
+          <span className="deleteLineup col">
+              <Button onClick={this.deleteLineup}><FontAwesomeIcon icon={faTrash}/></Button>
+          </span>
+        </div>
       );
     };
 
@@ -60,8 +59,8 @@ class LineupItem extends React.Component {
       }
       return (
         <div className="lineupCards card">
-            <h2 onClick={this.lineupClick}>{lineup.name}</h2>
-            {lineupEditDeleteBtn()}
+          <h2 onClick={this.lineupClick}>{lineup.name}</h2>
+          {lineupEditDeleteBtn()}
         </div>
       );
     };
