@@ -82,9 +82,9 @@ class LineupForm extends React.Component {
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
-            {/* <div class="input-group-append">
+            <div class="input-group-append">
               <button type="button" class="btn btn-outline-warning" onClick={this.formSubmit}>Submit</button>
-            </div> */}
+            </div>
           </div>
         </form>
       </div>
