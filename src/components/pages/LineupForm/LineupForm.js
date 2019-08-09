@@ -70,21 +70,25 @@ class LineupForm extends React.Component {
           </div>
         </form>;
       }
-      return <form className="lineupAddition" onSubmit={this.formSubmit}>
-        <h2>Add Lineup</h2>
-        <div className="input-group newLineupForm">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Lineup Name"
-            value={newLineupName.lineup}
-            onChange={this.lineupChange}
-          />
-          <div class="input-group-append">
-            <button type="button" class="btn btn-outline-warning" onClick={this.formSubmit}>Submit</button>
+      return (
+      <div className="row">
+        <form className="lineupAddition col s12" onSubmit={this.formSubmit}>
+          <h2>Add Lineup</h2>
+          <div className="input-field col s12 newLineupForm">
+            <input
+              type="text"
+              className="validate"
+              placeholder="Lineup Name"
+              value={newLineupName.lineup}
+              onChange={this.lineupChange}
+            />
+            {/* <div class="input-group-append">
+              <button type="button" class="btn btn-outline-warning" onClick={this.formSubmit}>Submit</button>
+            </div> */}
           </div>
-        </div>
-      </form>;
+        </form>
+      </div>
+      );
     };
     return (
       <div className="addEditLineup">

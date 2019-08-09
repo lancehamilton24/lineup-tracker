@@ -154,11 +154,11 @@ class Lineup extends React.Component {
     const noLineupData = () => {
       if (lineups.length === 0) {
         return (
-          <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
+          <h3>You do not have any lineups! Please begin by entering your lineup name above!</h3>
         );
       }
       return (
-        <p>Select lineup name to view, add, and edit players</p>
+        <h5>Select lineup name to view, add, and edit players</h5>
       );
     };
 
