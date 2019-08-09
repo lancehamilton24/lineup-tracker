@@ -17,13 +17,18 @@
   // padding-left: 10%;
 }
 
-
-.lineupForm {
-  display: flex;
-  justify-content: center;
-  border: 0.5rem outset rgb(7, 82, 7);
-  background-color: green !important;
+.toggleLineupForm {
+  margin-top: 2%;
 }
+
+// .lineupForm {
+//   // display: flex;
+//   // justify-content: center;
+//   border: outset black;
+//   background-color: rgba(0, 0, 0, 0.664) !important;
+//   margin-top: 2%;
+//   margin-bottom: 1%;
+// }
 
 .playerForm {
   background-color: rgb(151, 148, 148) !important;

@@ -26,6 +26,7 @@ class Lineup extends React.Component {
     isActive: false,
     editId: '-1',
     isHidden: true,
+    lineupFormIsHidden: true,
   }
 
   static propTypes = {
@@ -38,6 +39,13 @@ class Lineup extends React.Component {
       isHidden: !this.state.isHidden,
     });
   }
+
+  toggleHiddenLineupForm = () => {
+    this.setState({
+      lineupFormIsHidden: !this.state.isHidden,
+    });
+  }
+
 
   onOpenModal = () => {
     this.setState({ open: true });
@@ -95,7 +103,7 @@ class Lineup extends React.Component {
           const uid = authRequests.getCurrentUid();
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
-              this.setState({ lineups, isEditing: false, editId: '-1' });
+              this.setState({ lineups, isEditing: false, editId: '-1', lineupFormIsHidden: true });
             });
         })
         .catch(err => console.error('error with listings post', err));
@@ -105,7 +113,7 @@ class Lineup extends React.Component {
           const uid = authRequests.getCurrentUid();
           lineupRequests.getAllLineups(uid)
             .then((lineups) => {
-              this.setState({ lineups });
+              this.setState({ lineups, lineupFormIsHidden: true });
               this.setState({ players: [] });
               this.setState({ newLineupName: '' });
             });
@@ -138,6 +146,7 @@ class Lineup extends React.Component {
       open,
       players,
       isHidden,
+      lineupFormIsHidden,
     } = this.state;
 
     const lineupItems = lineups.map(lineup => (
@@ -148,24 +157,25 @@ class Lineup extends React.Component {
         passLineupToEdit={this.passLineupToEdit}
         loadSelectedLineup={this.loadSelectedLineup}
         onOpenModal={this.onOpenModal}
+        lineupFormIsHidden={lineupFormIsHidden}
       />
     ));
 
     const noLineupData = () => {
       if (lineups.length === 0) {
         return (
-          <p>You have not created any lineups yet! Please begin by entering your lineup name above!</p>
+          <h5>You do not currently have any lineups. Please begin by entering your lineup name above!</h5>
         );
       }
       return (
-        <p>Select lineup name to view, add, and edit players</p>
+        <h5>Select lineup name to view, add, and edit players</h5>
       );
     };
 
     const hideAddPlayerBtn = () => {
       if (isHidden === true) {
         return (
-          <a onClick={this.toggleHidden.bind(this)} class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
+          <a onClick={this.toggleHidden.bind(this)} title="Add sPlayers" class="btn-floating btn-large waves-effect waves-light red"><FontAwesomeIcon icon={faPlus} /></a>
         );
       }
       return (
@@ -173,15 +183,57 @@ class Lineup extends React.Component {
       );
     };
 
+    if (lineups.length === 0) {
+      return (
+        <div>
+          <div className='lineups container'>
+            <div className='lineupForm'>
+              <LineupForm
+                onSubmit={this.formSubmitLineup}
+                isEditing={isEditing}
+                editId={editId}
+                lineupFormIsHidden={lineupFormIsHidden}
+              />
+            </div>
+            <div>
+              {noLineupData()}
+            </div>
+            <div className="existingLineups">{lineupItems}</div>
+            <div>
+              <Modal className="modal" open={open} onClose={this.onCloseModal} center>
+                <LineupPlayers players={players} lineupId={this.state.lineupId} />
+                <div className="playerForm">
+                  {!this.state.isHidden && <PlayerForm
+                    onSubmit={this.formSubmitPlayer}
+                    players={players}
+                    onSelect={onLineupSelection}
+                    lineupId={this.state.lineupId}
+                    loadSelectedLineup={this.loadSelectedLineup}
+                    onClick={this.toggleHidden.bind(this)}
+                    isHidden={isHidden}
+                  />}
+                </div>
+                <div className="addPlayerBtn">{hideAddPlayerBtn()}</div>
+              </Modal>
+            </div>
+            <div>
+            </div>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div className="container">
+      <div>
+        <div>
+         <a onClick={this.toggleHiddenLineupForm.bind(this)} title="Add New Lineup" class="btn-floating btn-large waves-effect waves-light red toggleLineupForm"><FontAwesomeIcon icon={faPlus} /></a>
+         </div>
         <div className='lineups'>
           <div className='lineupForm'>
-            <LineupForm
+            {!this.state.lineupFormIsHidden && <LineupForm
               onSubmit={this.formSubmitLineup}
               isEditing={isEditing}
               editId={editId}
-            />
+            />}
           </div>
           <div>
             {noLineupData()}
