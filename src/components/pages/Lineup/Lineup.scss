@@ -1,10 +1,7 @@
 @import '../../../styles/_variables.scss';
 
 .lineups {
-  // background-color:white !important;
   width: 100%;
-  display: flex;
-  flex-direction: column;
   font-family: 'Coiny', cursive;
   text-align: center;
   color: white;
@@ -13,22 +10,14 @@
 .existingLineups {
   width: 100%;
   font-family: 'Coiny', cursive;
-  // padding-right: 10%;
-  // padding-left: 10%;
+  color: black;
 }
 
 .toggleLineupForm {
-  margin-top: 2%;
+  margin-top: 1%;
+  margin-left: 8%;
+  color: white;
 }
-
-// .lineupForm {
-//   // display: flex;
-//   // justify-content: center;
-//   border: outset black;
-//   background-color: rgba(0, 0, 0, 0.664) !important;
-//   margin-top: 2%;
-//   margin-bottom: 1%;
-// }
 
 .playerForm {
   background-color: rgb(151, 148, 148) !important;
@@ -60,6 +49,3 @@
     padding: 1%;
   }
 }
-// .col {
-//   background-color: green;
-// }
