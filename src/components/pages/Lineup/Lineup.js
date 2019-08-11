@@ -135,7 +135,7 @@ class Lineup extends React.Component {
       .catch(err => console.error('error with listings post', err));
   }
 
-  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
+  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId, lineupFormIsHidden: false });
 
   render() {
     const {

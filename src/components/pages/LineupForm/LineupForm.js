@@ -93,7 +93,9 @@ class LineupForm extends React.Component {
     };
     return (
       <div className="addEditLineup">
+        <div className="container">
         {title()}
+        </div>
       </div>
     );
   }
