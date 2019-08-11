@@ -16,7 +16,7 @@ npm start
 ## Screenshots
 
 ![homepage](./src/images/homepage1.PNG)
-![lineup](./src/images/Screenshot1.PNG)
-![lineup1](./src/images/Screenshot2.PNG)
-![lineup2](./src/images/Screenshot3.PNG)
-![lineup3](./src/images/Screenshot4.PNG)
+![screen3](./src/images/Screenshot4.png)
+![screen](./src/images/Screenshot1.png)
+![screen1](./src/images/Screenshot2.png)
+![screen2](./src/images/Screenshot3.png)
