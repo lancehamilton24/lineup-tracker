@@ -1,7 +1,14 @@
 .addEditLineup {
   // padding-top: 2%,
     border: outset black;
-  background-color: rgba(0, 0, 0, 0.664) !important;
+  background-color: rgba(255, 255, 255, 0.623) !important;
   margin-top: 2%;
-  margin-bottom: 1%;
+  h4 {
+    color: rgba(4, 0, 10, 0.822);
+  }
+}
+
+.newLineupForm {
+  display: flex;
+  flex-direction: row;
 }

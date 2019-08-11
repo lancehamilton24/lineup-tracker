@@ -55,7 +55,7 @@ class LineupForm extends React.Component {
     const title = () => {
       if (isEditing) {
         return <form onSubmit={this.formSubmit}>
-          <h3>Edit Lineup Name</h3>
+          <h4>Edit Lineup Name</h4>
           <div className="input-group editLineupForm">
             <input
               type="text"
@@ -73,18 +73,19 @@ class LineupForm extends React.Component {
       return (
       <div className="row">
         <form className="lineupAddition col s12" onSubmit={this.formSubmit}>
-          <h2>Add Lineup</h2>
+        <h4>Add Lineup</h4>
           <div className="input-field col s12 newLineupForm">
             <input
               type="text"
               className="validate"
-              placeholder="Lineup Name"
+              placeholder="New Lineup Name"
               value={newLineupName.lineup}
               onChange={this.lineupChange}
             />
-            <div class="input-group-append">
-              <button type="button" class="btn btn-outline-warning" onClick={this.formSubmit}>Submit</button>
-            </div>
+            {/* <div class="input-group-append"> */}
+            <a class="waves-effect black btn" onClick={this.formSubmit}>Submit</a>
+              {/* <button type="button" class="btn btn-warning" color="red lighten-5" onClick={this.formSubmit}>Submit</button> */}
+            {/* </div> */}
           </div>
         </form>
       </div>
@@ -92,7 +93,9 @@ class LineupForm extends React.Component {
     };
     return (
       <div className="addEditLineup">
+        <div className="container">
         {title()}
+        </div>
       </div>
     );
   }

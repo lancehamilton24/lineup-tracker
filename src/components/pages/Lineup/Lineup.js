@@ -135,7 +135,7 @@ class Lineup extends React.Component {
       .catch(err => console.error('error with listings post', err));
   }
 
-  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId });
+  passLineupToEdit = lineupId => this.setState({ isEditing: true, editId: lineupId, lineupFormIsHidden: false });
 
   render() {
     const {
@@ -224,11 +224,12 @@ class Lineup extends React.Component {
     }
     return (
       <div>
-        <div>
-         <a onClick={this.toggleHiddenLineupForm.bind(this)} title="Add New Lineup" class="btn-floating btn-large waves-effect waves-light red toggleLineupForm"><FontAwesomeIcon icon={faPlus} /></a>
-         </div>
-        <div className='lineups'>
+        <div className='lineups container'>
+         <a onClick={this.toggleHiddenLineupForm.bind(this)} title="Add New Lineup" class="btn-floating btn-large waves-effect black toggleLineupForm"><FontAwesomeIcon icon={faPlus} /></a>
           <div className='lineupForm'>
+          {/* <div>
+         <a onClick={this.toggleHiddenLineupForm.bind(this)} title="Add New Lineup" class="btn-floating btn-large waves-effect waves-light red toggleLineupForm"><FontAwesomeIcon icon={faPlus} /></a>
+         </div> */}
             {!this.state.lineupFormIsHidden && <LineupForm
               onSubmit={this.formSubmitLineup}
               isEditing={isEditing}

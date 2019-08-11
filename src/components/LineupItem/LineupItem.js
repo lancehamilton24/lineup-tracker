@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import lineupShape from '../../helpers/propz/lineupShape';
 
 
@@ -42,10 +42,11 @@ class LineupItem extends React.Component {
       return (
         <div>
           <span className="editLineup col">
-              <Button onClick={this.editLineup}><FontAwesomeIcon icon={faPencilAlt}/></Button>
+              {/* <Button onClick={this.editLineup}><FontAwesomeIcon icon={faPencilAlt}/></Button> */}
+              <a class="waves-effect black btn" title="Edit Lineup Name" onClick={this.editLineup}><FontAwesomeIcon icon={faPencilAlt}/></a>
           </span>
           <span className="deleteLineup col">
-              <Button onClick={this.deleteLineup}><FontAwesomeIcon icon={faTrash}/></Button>
+          <a class="waves-effect black btn" title="Delete Lineup" onClick={this.deleteLineup}><FontAwesomeIcon icon={faTrashAlt}/></a>
           </span>
         </div>
       );
@@ -66,7 +67,7 @@ class LineupItem extends React.Component {
     };
 
     return (
-      <div>
+      <div className="container">
         {lineupPage()}
       </div>
     );

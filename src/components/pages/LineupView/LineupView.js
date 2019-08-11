@@ -47,7 +47,7 @@ export class LineupView extends Component {
             </div>
           </div>
           <hr></hr>
-          <h5>{playerItems}</h5>
+          {playerItems}
         </div>
       );
     }
