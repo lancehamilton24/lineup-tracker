@@ -61,10 +61,9 @@ class PlayerForm extends React.Component {
     return (
       <div className="newPlayerForm">
         <form className="form" onSubmit={this.formPlayerSubmit}>
-        <h2>Add New Player</h2>
           <div className="basicLineup">
             <div className="form-group" id="basicStats">
-              <h5>Player Name</h5>
+              <p>Player Name</p>
               <input
                 type="text"
                 placeholder="Name"
@@ -73,7 +72,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="basicStats">
-              <h5>Position</h5>
+              <p>Position</p>
               <input
                 type="text"
                 placeholder="Position"
@@ -82,7 +81,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="basicStats">
-              <h5>Number</h5>
+              <p>Number</p>
               <input
                 type="text"
                 placeholder="Number"
@@ -93,7 +92,7 @@ class PlayerForm extends React.Component {
           </div>
           <div className="battingLineup">
             <div className="form-group" id="battingStats">
-              <h5>At Bats</h5>
+              <p>At Bats</p>
               <input
                 type="text"
                 placeholder="At Bats"
@@ -102,7 +101,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <h5>Hits</h5>
+              <p>Hits</p>
               <input
                 type="text"
                 placeholder="Hits"
@@ -111,7 +110,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <h5>Walks</h5>
+              <p>Walks</p>
               <input
                 type="text"
                 placeholder="Walks"
@@ -120,7 +119,7 @@ class PlayerForm extends React.Component {
               />
             </div>
             <div className="form-group" id="battingStats">
-              <h5>Strikeouts</h5>
+              <p>Strikeouts</p>
               <input
                 type="text"
                 placeholder="Strike-outs"
@@ -129,7 +128,7 @@ class PlayerForm extends React.Component {
               />
             </div>
           </div>
-          <button className="btn btn-danger">Save Player</button>
+          <a class="savePlayerBtn waves-effect black btn" onClick={this.formPlayerSubmit}>Save Player</a>
         </form>
       </div>
     );
