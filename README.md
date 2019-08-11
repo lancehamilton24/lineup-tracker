@@ -20,4 +20,3 @@ npm start
 ![screen](./src/images/Screenshot1.png)
 ![screen1](./src/images/Screenshot2.png)
 ![screen2](./src/images/Screenshot3.png)
-
