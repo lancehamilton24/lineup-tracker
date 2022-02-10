@@ -13,7 +13,7 @@
     "firebase": "^5.8.0",
     "font-awesome": "^4.7.0",
     "materialize-css": "^1.0.0-rc.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
